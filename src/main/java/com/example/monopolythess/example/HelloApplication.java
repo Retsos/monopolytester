@@ -16,7 +16,6 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 1540, 790);
         stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/monopoly-man.jpg"))));
 
-        System.out.println("Test");
         stage.setTitle("Monopoly!");
         stage.setScene(scene);
         stage.show();

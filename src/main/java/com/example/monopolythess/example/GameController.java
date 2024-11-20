@@ -214,37 +214,37 @@ public class GameController {
 
         switch (Avatar1.getName()) {
             case "Αμάξι" ->{
-                player1 = new Player(2000, username1, cards1, CarStack, 0, Agores1, 0, 0, money1, false, 0, 0, 0, 0);
+                player1 = new Player(1300, username1, cards1, CarStack, 0, Agores1, 0, 0, money1, false, 0, 0, 0, 0);
                 Car1.setOpacity(1);
             }
             case "Καπέλο" ->{
-                player1 = new Player(2000, username1, cards1, HatStack, 0, Agores1, 0, 0, money1, false, 0, 0, 0, 0);
+                player1 = new Player(1300, username1, cards1, HatStack, 0, Agores1, 0, 0, money1, false, 0, 0, 0, 0);
                 Hat1.setOpacity(1);
             }
             case "Άλογο" ->{
-                player1 = new Player(2000, username1, cards1, HorseStack, 0, Agores1, 0, 0, money1, false, 0, 0, 0, 0);
+                player1 = new Player(1300, username1, cards1, HorseStack, 0, Agores1, 0, 0, money1, false, 0, 0, 0, 0);
                 Horse1.setOpacity(1);
             }
             case null, default ->{
-                player1 = new Player(2000, username1, cards1, AgkyraStack, 0, Agores1, 0, 0, money1, false, 0, 0, 0, 0);
+                player1 = new Player(1300, username1, cards1, AgkyraStack, 0, Agores1, 0, 0, money1, false, 0, 0, 0, 0);
                 Anchor1.setOpacity(1);
             }
         }
         switch (Avatar2.getName()) {
             case "Αμάξι" ->{
-                player2 = new Player(2000, username2, cards2, CarStack, 0, Agores2, 0, 0, money2, false, 0, 0, 0, 0);
+                player2 = new Player(1300, username2, cards2, CarStack, 0, Agores2, 0, 0, money2, false, 0, 0, 0, 0);
                 Car2.setOpacity(1);
             }
             case "Καπέλο" ->{
-                player2 = new Player(2000, username2, cards2, HatStack, 0, Agores2, 0, 0, money2, false, 0, 0, 0, 0);
+                player2 = new Player(1300, username2, cards2, HatStack, 0, Agores2, 0, 0, money2, false, 0, 0, 0, 0);
                 Hat2.setOpacity(1);
             }
             case "Άλογο" ->{
-                player2 = new Player(2000, username2, cards2, HorseStack, 0, Agores2, 0, 0, money2, false, 0, 0, 0, 0);
+                player2 = new Player(1300, username2, cards2, HorseStack, 0, Agores2, 0, 0, money2, false, 0, 0, 0, 0);
                 Horse2.setOpacity(1);
             }
             case null, default ->{
-                player2 = new Player(2000, username2, cards2, AgkyraStack, 0, Agores2, 0, 0, money2, false, 0, 0, 0, 0);
+                player2 = new Player(1300, username2, cards2, AgkyraStack, 0, Agores2, 0, 0, money2, false, 0, 0, 0, 0);
                 Anchor2.setOpacity(1);
             }
         }
@@ -2265,32 +2265,41 @@ public class GameController {
     }
     public void BuyHotel(Player player, Cards card, ActionEvent event){
         if (card instanceof Odoi odos) {
-            if (odos.getSpitia()==4){
-                if (player.getMoney()-odos.getTimiSpiti()>0){
-                    odos.setJenodoxeio(true);
-                    player.setMoney(player.getMoney()-odos.getTimiSpiti());
-                    player.getShowmoney().setText("Χρήματα: "+player.getMoney());
-                    player.setSynoloJenodoxeiwn(player.getSynoloJenodoxeiwn()+1);
-                    if (player==player2){
-                        Houses2.setText("Ξενοδοχείο: Ναι");
+            if (!odos.isJenodoxeio()) {
+
+                if (odos.getSpitia() == 4) {
+                    if (player.getMoney() - odos.getTimiSpiti() > 0) {
+                        odos.setJenodoxeio(true);
+                        odos.setSpitia(odos.getSpitia() + 1);
+                        player.setMoney(player.getMoney() - odos.getTimiSpiti());
+                        player.getShowmoney().setText("Χρήματα: " + player.getMoney());
+                        player.setSynoloJenodoxeiwn(player.getSynoloJenodoxeiwn() + 1);
+                        if (player == player2) {
+                            Houses2.setText("Ξενοδοχείο: Ναι");
+                        } else {
+                            Houses1.setText("Ξενοδοχείο: Ναι");
+                        }
+                    } else {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Αγορά Ξενοδοχείου");
+                        alert.setHeaderText("Αποτέλεσμα Κάρτας");
+                        alert.setContentText("Δεν έχεις αρκετά χρήματα για να αγοράσεις Ξενοδοχείο σε αυτήν την περιοχή!");
+                        alert.showAndWait();
                     }
-                    else {
-                        Houses1.setText("Ξενοδοχείο: Ναι");
-                    }
-                }else {
+                } else {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Αγορά Ξενοδοχείου");
+                    alert.setTitle("Αγορά Σπιτιού");
                     alert.setHeaderText("Αποτέλεσμα Κάρτας");
-                    alert.setContentText("Δεν έχεις αρκετά χρήματα για να αγοράσεις Ξενοδοχείο σε αυτήν την περιοχή!");
+                    alert.setContentText("Πρέπει πρώτα να αγοράσεις 4 σπίτια σε αυτήν την περιοχή!");
                     alert.showAndWait();
                 }
-            }else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Αγορά Σπιτιού");
-                alert.setHeaderText("Αποτέλεσμα Κάρτας");
-                alert.setContentText("Πρέπει πρώτα να αγοράσεις 4 σπίτια σε αυτήν την περιοχή!");
-                alert.showAndWait();
             }
+        }else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Αγορά Σπιτιού");
+            alert.setHeaderText("Αποτέλεσμα Ενέργειας");
+            alert.setContentText("Έχεις αγοράσει ήδη ξενοδοχείο σε αυτή την περιοχή!");
+            alert.showAndWait();
         }
     }
     //SELL PRISON CARD
@@ -2416,7 +2425,7 @@ public class GameController {
             if (result.isPresent() && result.get() == Yes) {
                 // Αφαίρεση της κάρτας από τον παίκτη
                 player.removeCard(selectedCard);
-                player.setMoney(player.getMoney() + odos.getTimi());
+                player.setMoney(player.getMoney() + (odos.getTimi()/2) + odos.getSpitia());
 
                 // Ενημέρωση λίστας και γραφικών
                 player.ListSorted();
