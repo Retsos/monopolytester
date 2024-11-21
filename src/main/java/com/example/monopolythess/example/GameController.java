@@ -153,7 +153,7 @@ public class GameController {
                 int finalDice1 = 0;
                 int finalDice2 = 0;
                 try {
-                    for (int i = 0; i < 15; i++) {
+                    for (int i = 0; i < 30; i++) {
                         dice1Number = random.nextInt(6) + 1;
                         dice2Number = random.nextInt(6) + 1;
                         String dice1Path = Objects.requireNonNull(getClass().getResource("/dice" + dice1Number + ".png")).toExternalForm();
@@ -1089,70 +1089,70 @@ public class GameController {
     private void initializeCards() {
         // Αρχικοποίηση των βασικών θέσεων
         start = new StartPos("Αφετηρία", "Σημείο", 644, 585);
-        prison = new Prison("Φυλακή", "Σημείο", -8, 585);
+        prison = new Prison("Φυλακή", "Σημείο", 5, 585);
         freePass = new FreePass("Ελεύθερη Στάθμευση", "Σημείο", -8, -54);
-        gotoPrison = new GoToPrison("Πήγαινε Στην Φυλακή", "Σημείο", 644, -54);
+        gotoPrison = new GoToPrison("Πήγαινε Στην Φυλακή", "Σημείο", 654,-54);
         // Αρχικοποίηση των δρόμων (Οδοί) με τιμές που έχεις ήδη
-        odos1 = new Odoi("Εύοσμος", "Οδός", 60, 2, 0, false, false, 564, 585,"","Brown",50,false);
+        odos1 = new Odoi("Εύοσμος", "Οδός", 60, 2, 0, false, false, 570, 585,"","Brown",50,false);
         Kafe1.setText(odos1.getCardName());
-        odos2 = new Odoi("Συκιές", "Οδός", 50, 4, 0, false, false, 440, 585,"","Brown",50,false);
+        odos2 = new Odoi("Συκιές", "Οδός", 50, 4, 0, false, false, 450, 585,"","Brown",50,false);
         Kafe2.setText(odos2.getCardName());
-        odos4 = new Odoi("Βαρδάρης","Οδός",100,6,0,false,false,258,585,"","Cyan",50,false);
+        odos4 = new Odoi("Βαρδάρης","Οδός",100,6,0,false,false,268,585,"","Cyan",50,false);
         Galazio1.setText(odos4.getCardName());
-        odos5 = new Odoi("Βενιζέλου","Οδός",120,6,0,false,false,137,585,"","Cyan",50,false);
+        odos5 = new Odoi("Βενιζέλου","Οδός",120,6,0,false,false,150,585,"","Cyan",50,false);
         Galazio2.setText(odos5.getCardName());
-        odos6 = new Odoi("Νεάπολη","Οδός",140,8,0,false,false,74,585,"","Cyan",50,false);
+        odos6 = new Odoi("Νεάπολη","Οδός",140,8,0,false,false,90,585,"","Cyan",50,false);
         Galazio3.setText(odos6.getCardName());
-        odos7 = new Odoi("Λαγκαδάς","Οδός",140,10,0,false,false,-8,510,"","Pink",50,false);
+        odos7 = new Odoi("Λαγκαδάς","Οδός",140,10,0,false,false,5,505,"","Pink",50,false);
         Mov1.setText(odos7.getCardName());
-        odos8 = new Odoi("Βούλγαρη","Οδός",140,10,0,false,false,-8,388,"","Pink",100,false);
+        odos8 = new Odoi("Βούλγαρη","Οδός",140,10,0,false,false,5,384,"","Pink",100,false);
         Mov2.setText(odos8.getCardName());
-        odos9 = new Odoi("Πολίχνη","Οδός",140,12,0,false,false,-8,330,"","Pink",100,false);
+        odos9 = new Odoi("Πολίχνη","Οδός",140,12,0,false,false,5,325,"","Pink",100,false);
         Mov3.setText(odos9.getCardName());
-        odos10 = new Odoi("Ντεπώ","Οδός",160,14,0,false,false,-8,208,"","Orange",100,false);
+        odos10 = new Odoi("Ντεπώ","Οδός",160,14,0,false,false,5,203,"","Orange",100,false);
         Portokali1.setText(odos10.getCardName());
-        odos11 = new Odoi("Φάληρο","Οδός",160,14,0,false,false,-8,85,"","Orange",100,false);
+        odos11 = new Odoi("Φάληρο","Οδός",160,14,0,false,false,5,80,"","Orange",100,false);
         Portokali2.setText(odos11.getCardName());
-        odos12 = new Odoi("Τριανδρία","Οδός",180,16,0,false,false,-8,26,"","Orange",100,false);
+        odos12 = new Odoi("Τριανδρία","Οδός",180,16,0,false,false,5,21,"","Orange",100,false);
         Portokali3.setText(odos12.getCardName());
-        odos13 = new Odoi("Δελφών","Οδός",200,18,0,false,false,75,-54,"","Red",100,false);
+        odos13 = new Odoi("Δελφών","Οδός",200,18,0,false,false,87,-54,"","Red",100,false);
         Kokkino1.setText(odos13.getCardName());
-        odos14 = new Odoi("Χαριλάου","Οδός",220,18,0,false,false,198,-54,"","Red",150,false);
+        odos14 = new Odoi("Χαριλάου","Οδός",220,18,0,false,false,210,-54,"","Red",150,false);
         Kokkino2.setText(odos14.getCardName());
-        odos15 = new Odoi("Ανάληψη","Οδός",220,20,0,false,false,260,-54,"","Red",150,false);
+        odos15 = new Odoi("Ανάληψη","Οδός",220,20,0,false,false,270,-54,"","Red",150,false);
         Kokkino3.setText(odos15.getCardName());
-        odos16 = new Odoi("Ν.Παραλία","Οδός",240,20,0,false,false,380,-54,"","Yellow",150,false);
+        odos16 = new Odoi("Ν.Παραλία","Οδός",240,20,0,false,false,390,-54,"","Yellow",150,false);
         Kitrino1.setText(odos16.getCardName());
-        odos17 = new Odoi("Πυλαία","Οδός",260,22,0,false,false,440,-54,"","Yellow",150,false);
+        odos17 = new Odoi("Πυλαία","Οδός",260,22,0,false,false,450,-54,"","Yellow",150,false);
         Kitrino2.setText(odos17.getCardName());
-        odos18 = new Odoi("Τούμπα","Οδός",260,22,0,false,false,563,-54,"","Yellow",150,false);
+        odos18 = new Odoi("Τούμπα","Οδός",260,22,0,false,false,573,-54,"","Yellow",150,false);
         Kitrino3.setText(odos18.getCardName());
-        odos19 = new Odoi("Ρετζίκι","Οδός",280,24,0,false,false,654,26,"","Green",150,false);
+        odos19 = new Odoi("Ρετζίκι","Οδός",280,24,0,false,false,654,21,"","Green",150,false);
         Prasino1.setText(odos19.getCardName());
-        odos20 = new Odoi("Καλαμαριά","Οδός",300,26,0,false,false,654,85,"","Green",200,false);
+        odos20 = new Odoi("Καλαμαριά","Οδός",300,26,0,false,false,654,84,"","Green",200,false);
         Prasino2.setText(odos20.getCardName());
-        odos21 = new Odoi("Ν.Κρήνη","Οδός",300,26,0,false,false,654,208,"","Green",200,false);
+        odos21 = new Odoi("Ν.Κρήνη","Οδός",300,26,0,false,false,654,204,"","Green",200,false);
         Prasino3.setText(odos21.getCardName());
-        odos22= new Odoi("Θέρμη","Οδός",320,28,0,false,false,654,388,"","Blue",200,false);
+        odos22= new Odoi("Θέρμη","Οδός",320,28,0,false,false,654,384,"","Blue",200,false);
         Mple1.setText(odos22.getCardName());
-        odos23 = new Odoi("Πανόραμα","Οδός",350,35,0,false,false,654,513,"","Blue",250,false);
+        odos23 = new Odoi("Πανόραμα","Οδός",350,35,0,false,false,654,505,"","Blue",250,false);
         Mple2.setText(odos23.getCardName());
         //STATHMOI/ETAIRIES
-         odos24 = new Odoi("ΟΑΣΘ","Σταθμός",200,false,320,585,"","Grey");
-         odos25 = new Odoi("ΟΣΕ","Σταθμός",200,false,-8,268,"","Grey");
-         odos26 = new Odoi("ΜΕΤΡΟ","Σταθμός",200,false,320,-54,"","Grey");
+         odos24 = new Odoi("ΟΑΣΘ","Σταθμός",200,false,330,585,"","Grey");
+         odos25 = new Odoi("ΟΣΕ","Σταθμός",200,false,37,263,"","Grey");
+         odos26 = new Odoi("ΜΕΤΡΟ","Σταθμός",200,false,330,-54,"","Grey");
          odos27 = new Odoi("SKG","Σταθμός",200,false,654,267,"","Grey");
-         odos28 = new Odoi("Εταιρία Ρεύματος","Εταιρία",150,false,-8,450,"","White");
-         odos29 = new Odoi("Εταιρία Ύδρευσης ","Εταιρία",250,false,502,-54,"","White");
+         odos28 = new Odoi("Εταιρία Ρεύματος","Εταιρία",150,false,5,440,"","White");
+         odos29 = new Odoi("Εταιρία Ύδρευσης ","Εταιρία",250,false,512,-54,"","White");
         //KARTES APOFASIS/ENTOLIS
-         odos30 = new Apofasi("Απόφαση","Απόφαση",502,585);
-         odos31 = new Apofasi("Απόφαση","Απόφαση",-8,147);
+         odos30 = new Apofasi("Απόφαση","Απόφαση",512,585);
+         odos31 = new Apofasi("Απόφαση","Απόφαση",5,142);
          odos32 = new Apofasi("Απόφαση","Απόφαση",654,147);
-         odos33 = new Entoli("Εντολή","Εντολή",198,585);
-         odos34 = new Entoli("Εντολή","Εντολή",137,-54);
+         odos33 = new Entoli("Εντολή","Εντολή",208,585);
+         odos34 = new Entoli("Εντολή","Εντολή",147,-54);
          odos35 = new Entoli("Εντολή","Εντολή",654,326);
          //Foros
-         odos37= new Cards("Έκτακτη Φορολογία","Φόρος",654,455){
+         odos37= new Cards("Έκτακτη Φορολογία","Φόρος",654,442){
             @Override
             public void Do(Player player) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -1166,7 +1166,7 @@ public class GameController {
                 else money1.setText("Χρήματα: "+player1.getMoney());
             }
         };
-         odos3 = new Cards("Έκτακτη Φορολογία","Φόρος",385,585){
+         odos3 = new Cards("Έκτακτη Φορολογία","Φόρος",385,592){
             @Override
             public void Do(Player player) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
