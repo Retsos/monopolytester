@@ -133,6 +133,9 @@ public class SceneController {
             alert.setTitle("Monopoly");
             alert.setHeaderText("Λάθος Ενέργεια");
             alert.setContentText("Τo πεδίo για τo όνομα δεν μπορεί να είναι κενό");
+
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image("monopoly-man.jpg"));
             alert.showAndWait();
             return false;
         } else if (!Field1.isEmpty() && Field2.isEmpty()) {
@@ -142,6 +145,9 @@ public class SceneController {
             alert.setTitle("Monopoly");
             alert.setHeaderText("Λάθος Ενέργεια");
             alert.setContentText("Τo πεδίo για τo όνομα δεν μπορεί να είναι κενό");
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+
+            stage.getIcons().add(new Image("monopoly-man.jpg"));
             alert.showAndWait();
             return false;
         } else if (Field1.isEmpty()) {
@@ -151,6 +157,8 @@ public class SceneController {
             alert.setTitle("Monopoly");
             alert.setHeaderText("Λάθος Ενέργεια");
             alert.setContentText("Τα πεδία για τα ονόματα δεν μπορεί να είναι κενά");
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image("monopoly-man.jpg"));
             alert.showAndWait();
             return false;
         }
@@ -168,6 +176,8 @@ public class SceneController {
             alert.setTitle("Monopoly");
             alert.setHeaderText("Λάθος Ενέργεια");
             alert.setContentText("Πρέπει ο παίκτης να επιλέξει ένα Avatar");
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image("monopoly-man.jpg"));
             alert.showAndWait();
             return false;
         } else if (avatar1!=null    && avatar2==null) {
@@ -177,6 +187,8 @@ public class SceneController {
             alert.setTitle("Monopoly");
             alert.setHeaderText("Λάθος Ενέργεια");
             alert.setContentText("Πρέπει ο παίκτης να επιλέξει ένα Avatar");
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image("monopoly-man.jpg"));
             alert.showAndWait();
             return false;
         } else if (avatar1==null) {
@@ -186,6 +198,8 @@ public class SceneController {
             alert.setTitle("Monopoly");
             alert.setHeaderText("Λάθος Ενέργεια");
             alert.setContentText("Πρέπει οι παίκτες να επιλέξουν από ένα Avatar");
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image("monopoly-man.jpg"));
             alert.showAndWait();
             return false;
         }

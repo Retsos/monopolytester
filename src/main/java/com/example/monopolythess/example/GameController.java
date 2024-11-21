@@ -153,7 +153,7 @@ public class GameController {
                 int finalDice1 = 0;
                 int finalDice2 = 0;
                 try {
-                    for (int i = 0; i < 30; i++) {
+                    for (int i = 0; i < 20; i++) {
                         dice1Number = random.nextInt(6) + 1;
                         dice2Number = random.nextInt(6) + 1;
                         String dice1Path = Objects.requireNonNull(getClass().getResource("/dice" + dice1Number + ".png")).toExternalForm();
@@ -409,6 +409,8 @@ public class GameController {
                                 alert.setTitle("Αγορά Ξενοδοχείου");
                                 alert.setHeaderText("Αποτυχία Αγοράς");
                                 alert.setContentText("Πρέπει πρώτα να αγοράσεις 4 σπίτια για να αγοράσεις ξενοδοχείο!");
+                                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                                stage.getIcons().add(new Image("monopoly-man.jpg"));
                                 alert.showAndWait();
                             }
                         }
@@ -417,6 +419,8 @@ public class GameController {
                             alert.setTitle("Αγορά Ξενοδοχείου");
                             alert.setHeaderText("Αποτυχία Αγοράς");
                             alert.setContentText("Δεν μπορείς να αγοράσεις Ξενοδοχείο σε αυτήν την περιοχή");
+                            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                            stage.getIcons().add(new Image("monopoly-man.jpg"));
                             alert.showAndWait();
                         }
                     }
@@ -426,6 +430,8 @@ public class GameController {
                 alert.setTitle("Monopoly");
                 alert.setHeaderText("Λάθος Ενέργεια");
                 alert.setContentText("Δεν είναι η σειρά σου για να αγοράσεις Ξενοδοχείο.");
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
             }
         });
@@ -444,6 +450,8 @@ public class GameController {
                                 alert.setTitle("Αγορά Ξενοδοχείου");
                                 alert.setHeaderText("Αποτυχία Αγοράς");
                                 alert.setContentText("Πρέπει πρώτα να αγοράσεις 4 σπίτια για να αγοράσεις ξενοδοχείο!");
+                                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                                stage.getIcons().add(new Image("monopoly-man.jpg"));
                                 alert.showAndWait();
                             }
                         }
@@ -452,6 +460,8 @@ public class GameController {
                             alert.setTitle("Αγορά Ξενοδοχείου");
                             alert.setHeaderText("Αποτυχία Αγοράς");
                             alert.setContentText("Δεν μπορείς να αγοράσεις Ξενοδοχείο σε αυτήν την περιοχή");
+                            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                            stage.getIcons().add(new Image("monopoly-man.jpg"));
                             alert.showAndWait();
                         }
                     }
@@ -462,6 +472,8 @@ public class GameController {
                 alert.setTitle("Monopoly");
                 alert.setHeaderText("Λάθος Ενέργεια");
                 alert.setContentText("Δεν είναι η σειρά σου για να αγοράσεις Ξενοδοχείο.");
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
             }
         });
@@ -474,6 +486,8 @@ public class GameController {
                 alert.setTitle("Monopoly");
                 alert.setHeaderText("Λάθος Ενέργεια");
                 alert.setContentText("Δεν είναι η σειρά σου για να πουλήσεις την κάρτα.");
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
             }
         });
@@ -485,6 +499,8 @@ public class GameController {
                 alert.setTitle("Monopoly");
                 alert.setHeaderText("Λάθος Ενέργεια");
                 alert.setContentText("Δεν είναι η σειρά σου για να πουλήσεις την κάρτα.");
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
             }
         });
@@ -498,6 +514,8 @@ public class GameController {
                 alert.setTitle("Monopoly");
                 alert.setHeaderText("Λάθος Ενέργεια");
                 alert.setContentText("Δεν είναι η σειρά σου για να πουλήσεις την κάρτα.");
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
             }
         } );
@@ -511,6 +529,8 @@ public class GameController {
                 alert.setTitle("Monopoly");
                 alert.setHeaderText("Λάθος Ενέργεια");
                 alert.setContentText("Δεν είναι η σειρά σου για να πουλήσεις την κάρτα.");
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
             }
         } );
@@ -531,6 +551,8 @@ public class GameController {
             alert.setTitle("Monopoly");
             alert.setHeaderText("Λάθος Ενέργεια");
             alert.setContentText("Δεν έχεις επιλέξει κάποια περιοχή.");
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image("monopoly-man.jpg"));
             alert.showAndWait();
             return null;
         }
@@ -548,6 +570,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
 
                 player.setCurrentPos(0);
@@ -565,6 +589,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
                 if (player.getMoney()>=100){
                     player.setMoney(player.getMoney()-100);
@@ -588,6 +614,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
 
                 if (player.getMoney()>=Synolo) {
@@ -610,6 +638,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
                 if (player.getMoney()>=150) {
                     player.setMoney(player.getMoney() - 150);
@@ -631,6 +661,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
 
                 player.setMoney(player.getMoney()+500);
@@ -648,6 +680,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
 
                 player.setMoney(player.getMoney()+250);
@@ -665,6 +699,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
 
                 player.setMoney(player.getMoney()+100);
@@ -682,6 +718,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
 
                 player.setMoney(player.getMoney()+200);
@@ -699,6 +737,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
 
                 if (player==player1){
@@ -718,6 +758,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
 
                 player.setCurrentPos(10);
@@ -738,6 +780,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
 
                 player.setMoney(player.getMoney()+100);
@@ -756,6 +800,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
 
                 if (player.getMoney()>=100) {
@@ -780,6 +826,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
                 
                 Player nextPlayer= (turn == 2) ? player1 : player2;
@@ -816,6 +864,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
 
                 player.setCurrentPos(0);
@@ -833,6 +883,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
 
                 player.setCurrentPos(0);
@@ -851,6 +903,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
 
                 int[] stationPositions = {5, 15, 25, 35};
@@ -872,7 +926,6 @@ public class GameController {
                         nearestStation = station;
                     }
                 }
-
                 player.setCurrentPos(0);
                 player.getStack().setLayoutY(Board[nearestStation].getY());
                 player.getStack().setLayoutX(Board[nearestStation].getX());
@@ -892,6 +945,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
 
                 int sum=player.getCurrentPos()-3;
@@ -910,6 +965,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
 
                 Player nextPlayer= (turn == 2) ? player1 : player2;
@@ -937,6 +994,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
 
                 player.setMoney(player.getMoney()+100);
@@ -954,6 +1013,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
 
                 player.setCurrentPos(10);
@@ -973,6 +1034,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
 
                 if (player==player1){
@@ -991,6 +1054,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
 
                 int sum=player.getCurrentPos()+2;
@@ -1009,6 +1074,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
 
                 player.setCurrentPos(0);
@@ -1026,6 +1093,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
 
                 if (player.getCurrentPos()>5){
@@ -1047,6 +1116,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
 
                 player.setMoney(player.getMoney()+150);
@@ -1066,6 +1137,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
 
                 player.setMoney(player.getMoney()+300);
@@ -1159,6 +1232,8 @@ public class GameController {
                 alert.setTitle("Φόρος");
                 alert.setHeaderText("Έκτακτη Φορολογία");
                 alert.setContentText("Η τράπεζα σε χρεώνει 100€ ");
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
                 player.setMoney(player.getMoney()-100);
                 if (player==player2)
@@ -1173,6 +1248,8 @@ public class GameController {
                 alert.setTitle("Φόρος");
                 alert.setHeaderText("Έκτακτη Φορολογία");
                 alert.setContentText("Η τράπεζα σε χρεώνει 200€ ");
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
                 player.setMoney(player.getMoney()-200);
                 if (player==player1)
@@ -1396,6 +1473,8 @@ public class GameController {
                         alert.setTitle("Monopoly");
                         alert.setHeaderText("Σε έπιασε η αστυνομία");
                         alert.setContentText("Πήγαινε κατευθείαν στη φυλακή");
+                        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                        stage.getIcons().add(new Image("monopoly-man.jpg"));
                         alert.showAndWait();
 
                         currentPlayer.setPrison(true);
@@ -1508,7 +1587,6 @@ public class GameController {
         if (!player.isPrison()){
             MovePlayer(player,sum);
         }else{
-            System.out.println("HelloPrison");
             checkPrison(player);
         }
     }
@@ -1528,6 +1606,8 @@ public class GameController {
             content.setTextAlignment(TextAlignment.CENTER);
             content.setWrappingWidth(400);
             alert.getDialogPane().setContent(content);
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image("monopoly-man.jpg"));
             alert.showAndWait();
 
         }
@@ -1558,7 +1638,8 @@ public class GameController {
                 alert.setTitle("Monopoly");
                 alert.setHeaderText("Φυλακή");
                 alert.setContentText("Θες να χρησιμοποιήσεις την κάρτα εξόδου?");
-
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 ButtonType Yes = new ButtonType("Ναι");
                 ButtonType No = new ButtonType("Όχι");
                 // Προσθήκη των κουμπιών επιλογών στο alert
@@ -1583,7 +1664,8 @@ public class GameController {
                 alert.setTitle("Monopoly");
                 alert.setHeaderText("Φυλακή");
                 alert.setContentText("Θες να χρησιμοποιήσεις την κάρτα εξόδου?");
-
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 ButtonType Yes = new ButtonType("Ναι");
                 ButtonType No = new ButtonType("Όχι");
                 // Προσθήκη των κουμπιών επιλογών στο alert
@@ -1607,6 +1689,9 @@ public class GameController {
             Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION);
             alert2.setTitle("Monopoly");
             alert2.setHeaderText("Έφερες διπλή ζαριά και βγήκες από την φυλακή!");
+            Stage stage = (Stage) alert2.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image("monopoly-man.jpg"));
+            alert2.showAndWait();
             player.setPrison(false);
             player.setCurrentPos(10);
             player.setRounds(0);
@@ -1617,6 +1702,8 @@ public class GameController {
             alert.setTitle("Monopoly");
             alert.setHeaderText("Φυλακή");
             alert.setContentText("Έχεις άλλους 3 γύρους στη φυλακή");
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image("monopoly-man.jpg"));
 
             ButtonType payToExit = new ButtonType("Πλήρωσε 100€  για να βγεις");
             ButtonType waitForTurns = new ButtonType("Περίμενε 3 γύρους");
@@ -1640,6 +1727,8 @@ public class GameController {
                         noMoneyAlert.setTitle("Monopoly");
                         noMoneyAlert.setHeaderText("Δεν έχεις αρκετά χρήματα!");
                         noMoneyAlert.setContentText("Χρειάζεσαι 100€  για να πληρώσεις την εγγύηση.");
+                        Stage stage2 = (Stage) noMoneyAlert.getDialogPane().getScene().getWindow();
+                        stage2.getIcons().add(new Image("monopoly-man.jpg"));
                         noMoneyAlert.showAndWait();
                     }
                 }
@@ -1653,7 +1742,8 @@ public class GameController {
             alert.setTitle("Monopoly");
             alert.setHeaderText("Φυλακή");
             alert.setContentText("Έχεις άλλους 2 γύρους στη φυλακή");
-
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image("monopoly-man.jpg"));
             ButtonType payToExit = new ButtonType("Πλήρωσε 100€  για να βγεις");
             ButtonType waitForTurns = new ButtonType("Περίμενε 2 γύρους");
 
@@ -1676,6 +1766,8 @@ public class GameController {
                         noMoneyAlert.setTitle("Monopoly");
                         noMoneyAlert.setHeaderText("Δεν έχεις αρκετά χρήματα!");
                         noMoneyAlert.setContentText("Χρειάζεσαι 100€  για να πληρώσεις την εγγύηση.");
+                        Stage stage2 = (Stage) noMoneyAlert.getDialogPane().getScene().getWindow();
+                        stage2.getIcons().add(new Image("monopoly-man.jpg"));
                         noMoneyAlert.showAndWait();
                     }
                 }
@@ -1689,7 +1781,8 @@ public class GameController {
             alert.setTitle("Monopoly");
             alert.setHeaderText("Φυλακή");
             alert.setContentText("Έχεις άλλον 1 γύρο στη φυλακή");
-
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image("monopoly-man.jpg"));
             ButtonType payToExit = new ButtonType("Πλήρωσε 100€  για να βγεις");
             ButtonType waitForTurns = new ButtonType("Περίμενε 1 γύρους");
             // Προσθήκη των κουμπιών επιλογών στο alert
@@ -1712,6 +1805,8 @@ public class GameController {
                         noMoneyAlert.setTitle("Monopoly");
                         noMoneyAlert.setHeaderText("Δεν έχεις αρκετά χρήματα!");
                         noMoneyAlert.setContentText("Χρειάζεσαι 100€  για να πληρώσεις την εγγύηση.");
+                        Stage stage2 = (Stage) noMoneyAlert.getDialogPane().getScene().getWindow();
+                        stage2.getIcons().add(new Image("monopoly-man.jpg"));
                         noMoneyAlert.showAndWait();
                     }
                 }
@@ -1725,6 +1820,8 @@ public class GameController {
             alert.setTitle("Monopoly");
             alert.setHeaderText("Φυλακή");
             alert.setHeaderText("Σε αυτόν τον γύρο βγαίνεις απο την φυλακή και πληρώνεις 100€ ");
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image("monopoly-man.jpg"));
             alert.showAndWait();
 
             player.setMoney(player.getMoney()-100);
@@ -1744,6 +1841,8 @@ public class GameController {
                     alert.setTitle("Monopoly");
                     alert.setHeaderText("Είσαι τυχερός!!");
                     alert.setContentText("Έφερες διπλές ζαριές, και ξανά παίζεις");
+                    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                    stage.getIcons().add(new Image("monopoly-man.jpg"));
                     alert.showAndWait();
                     counter1doubles++;
                 }
@@ -1753,6 +1852,8 @@ public class GameController {
                     alert2.setTitle("Monopoly");
                     alert2.setHeaderText("Είσαι ασυνήθιστα τυχερός");
                     alert2.setContentText("Πάνε αμέσως φυλακή για να ηρεμήσεις!");
+                    Stage stage = (Stage) alert2.getDialogPane().getScene().getWindow();
+                    stage.getIcons().add(new Image("monopoly-man.jpg"));
                     alert2.showAndWait();
 
                     player1.setCurrentPos(10);
@@ -1779,6 +1880,8 @@ public class GameController {
                                 noMoneyAlert.setTitle("Monopoly");
                                 noMoneyAlert.setHeaderText("Φυλακή");
                                 noMoneyAlert.setContentText("Χρειάζεσαι 100€  για να πληρώσεις την εγγύηση.");
+                                Stage stage2 = (Stage) noMoneyAlert.getDialogPane().getScene().getWindow();
+                                stage2.getIcons().add(new Image("monopoly-man.jpg"));
                                 noMoneyAlert.showAndWait();
                             }
                         }else {
@@ -1799,6 +1902,8 @@ public class GameController {
                     alert.setTitle("Monopoly");
                     alert.setHeaderText("Είσαι τυχερός!!");
                     alert.setContentText("Έφερες διπλές ζαριές, και ξανά παίζεις");
+                    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                    stage.getIcons().add(new Image("monopoly-man.jpg"));
                     alert.showAndWait();
                     counter2doubles++;
                 }
@@ -1808,6 +1913,8 @@ public class GameController {
                     alert2.setTitle("Monopoly");
                     alert2.setHeaderText("Είσαι ασυνήθιστα τυχερός");
                     alert2.setContentText("Πάνε αμέσως φυλακή για να ηρεμήσεις!");
+                    Stage stage = (Stage) alert2.getDialogPane().getScene().getWindow();
+                    stage.getIcons().add(new Image("monopoly-man.jpg"));
                     alert2.showAndWait();
 
                     player2.setCurrentPos(10);
@@ -1834,6 +1941,8 @@ public class GameController {
                                 noMoneyAlert.setTitle("Monopoly");
                                 noMoneyAlert.setHeaderText("Φυλακή");
                                 noMoneyAlert.setContentText("Χρειάζεσαι 100€  για να πληρώσεις την εγγύηση.");
+                                Stage stage2 = (Stage) noMoneyAlert.getDialogPane().getScene().getWindow();
+                                stage2.getIcons().add(new Image("monopoly-man.jpg"));
                                 noMoneyAlert.showAndWait();
                             }
                         }else {
@@ -1978,6 +2087,8 @@ public class GameController {
                         alert.setTitle("Πληρωμή Ενοικίου");
                         alert.setHeaderText("Αποτέλεσμα Κάρτας");
                         alert.setContentText("Δεν έχεις αρκετά χρήματα για να πληρώσεις το Ενοίκιο!");
+                        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                        stage.getIcons().add(new Image("monopoly-man.jpg"));
                         alert.showAndWait();
                         return false;
                     }
@@ -1987,6 +2098,8 @@ public class GameController {
                     alert.setTitle("Monopoly");
                     alert.setHeaderText("Αποτέλεσμα Κάρτας");
                     alert.setContentText("Λάθος Ενέργεια");
+                    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                    stage.getIcons().add(new Image("monopoly-man.jpg"));
                     alert.showAndWait();
                     return false;
                 }
@@ -2008,6 +2121,8 @@ public class GameController {
                         alert.setTitle("Πληρωμή Ενοικίου");
                         alert.setHeaderText("Αποτέλεσμα Κάρτας");
                         alert.setContentText("Δεν έχεις αρκετά χρήματα για να πληρώσεις το Ενοίκιο!");
+                        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                        stage.getIcons().add(new Image("monopoly-man.jpg"));
                         alert.showAndWait();
                         return false;
                     }
@@ -2017,6 +2132,8 @@ public class GameController {
                     alert.setTitle("Monopoly");
                     alert.setHeaderText("Αποτέλεσμα Κάρτας");
                     alert.setContentText("Λάθος Ενέργεια");
+                    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                    stage.getIcons().add(new Image("monopoly-man.jpg"));
                     alert.showAndWait();
                     return false;
                 }
@@ -2038,6 +2155,8 @@ public class GameController {
                         alert.setTitle("Πληρωμή Ενοικίου");
                         alert.setHeaderText("Αποτέλεσμα Κάρτας");
                         alert.setContentText("Δεν έχεις αρκετά χρήματα για να πληρώσεις το Ενοίκιο!");
+                        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                        stage.getIcons().add(new Image("monopoly-man.jpg"));
                         alert.showAndWait();
                         return false;
                     }
@@ -2047,6 +2166,8 @@ public class GameController {
                     alert.setTitle("Monopoly");
                     alert.setHeaderText("Αποτέλεσμα Κάρτας");
                     alert.setContentText("Λάθος Ενέργεια");
+                    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                    stage.getIcons().add(new Image("monopoly-man.jpg"));
                     alert.showAndWait();
                     return false;
                 }
@@ -2092,6 +2213,8 @@ public class GameController {
                     alert.setTitle("Αγοραπωλησία");
                     alert.setHeaderText("Αποτέλεσμα Κάρτας");
                     alert.setContentText("Δεν έχεις αρκετά χρήματα για να αγοράσεις την περιοχή!");
+                    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                    stage.getIcons().add(new Image("monopoly-man.jpg"));
                     alert.showAndWait();
                     return false;
                 }
@@ -2100,6 +2223,8 @@ public class GameController {
                 alert.setTitle("Αγοραπωλησία");
                 alert.setHeaderText("Αποτέλεσμα Κάρτας");
                 alert.setContentText("Η περιοχή είναι ήδη αγορασμένη");
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
                 return false;
             }
@@ -2156,6 +2281,8 @@ public class GameController {
             alert.setTitle("Αγορά Σπιτιού");
             alert.setHeaderText("Αποτέλεσμα Κάρτας");
             alert.setContentText("Δεν έχεις επιλέξει κατάλληλη κάρτα για την αγορά σπιτιού.");
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image("monopoly-man.jpg"));
             alert.showAndWait();
         }
     }
@@ -2179,6 +2306,8 @@ public class GameController {
                     alert.setTitle("Αγορά Σπιτιού");
                     alert.setHeaderText("Αποτέλεσμα Κάρτας");
                     alert.setContentText("Δεν έχεις αρκετά χρήματα για να αγοράσεις σπίτι σε αυτήν την περιοχή!");
+                    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                    stage.getIcons().add(new Image("monopoly-man.jpg"));
                     alert.showAndWait();
                 }
             }else {
@@ -2186,6 +2315,8 @@ public class GameController {
                 alert.setTitle("Αγορά Σπιτιού");
                 alert.setHeaderText("Αποτέλεσμα Κάρτας");
                 alert.setContentText("Μπορείς να αγοράσεις μέχρι 4 σπίτια σε κάθε περιοχή!");
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
             }
 
@@ -2227,6 +2358,8 @@ public class GameController {
             alert.setTitle("Αγορά Σπιτιού");
             alert.setHeaderText("Αποτέλεσμα Κάρτας");
             alert.setContentText("Δεν έχεις επιλέξει κατάλληλη κάρτα για την αγορά σπιτιού.");
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image("monopoly-man.jpg"));
             alert.showAndWait();
         }
     }
@@ -2251,6 +2384,8 @@ public class GameController {
                         alert.setTitle("Αγορά Ξενοδοχείου");
                         alert.setHeaderText("Αποτέλεσμα Κάρτας");
                         alert.setContentText("Δεν έχεις αρκετά χρήματα για να αγοράσεις Ξενοδοχείο σε αυτήν την περιοχή!");
+                        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                        stage.getIcons().add(new Image("monopoly-man.jpg"));
                         alert.showAndWait();
                     }
                 } else {
@@ -2258,6 +2393,8 @@ public class GameController {
                     alert.setTitle("Αγορά Σπιτιού");
                     alert.setHeaderText("Αποτέλεσμα Κάρτας");
                     alert.setContentText("Πρέπει πρώτα να αγοράσεις 4 σπίτια σε αυτήν την περιοχή!");
+                    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                    stage.getIcons().add(new Image("monopoly-man.jpg"));
                     alert.showAndWait();
                 }
             }
@@ -2266,6 +2403,8 @@ public class GameController {
             alert.setTitle("Αγορά Σπιτιού");
             alert.setHeaderText("Αποτέλεσμα Ενέργειας");
             alert.setContentText("Έχεις αγοράσει ήδη ξενοδοχείο σε αυτή την περιοχή!");
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image("monopoly-man.jpg"));
             alert.showAndWait();
         }
     }
@@ -2277,6 +2416,8 @@ public class GameController {
                 alert.setTitle("Monopoly");
                 alert.setHeaderText("Αποτέλεσμα Ενέργειας");
                 alert.setContentText("Θες να πουλήσεις την κάρτα εξόδου?");
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
 
                 ButtonType Yes = new ButtonType("Ναι");
                 ButtonType No = new ButtonType("Όχι");
@@ -2299,6 +2440,8 @@ public class GameController {
                             alert2.setTitle("Monopoly");
                             alert2.setHeaderText("Αποτέλεσμα Ενέργειας");
                             alert2.setContentText("Πούλησες την κάρτα εξόδου σου για 80€  στον αντίπαλο.");
+                            Stage stage2 = (Stage) alert2.getDialogPane().getScene().getWindow();
+                            stage2.getIcons().add(new Image("monopoly-man.jpg"));
 
                             ButtonType Cont = new ButtonType("Οκ");
                             alert.getButtonTypes().setAll(Cont);
@@ -2310,6 +2453,8 @@ public class GameController {
                 alert2.setTitle("Monopoly");
                 alert2.setHeaderText("Αποτέλεσμα Ενέργειας");
                 alert2.setContentText("Δεν έχεις κάρτα εξόδου από την φυλακή.");
+                Stage stage = (Stage) alert2.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert2.showAndWait();
             }
             else if (CheckPrison2.isSelected()){
@@ -2317,6 +2462,8 @@ public class GameController {
                 alert.setTitle("Monopoly");
                 alert.setHeaderText("Αποτέλεσμα Ενέργειας");
                 alert.setContentText("Ο αντίπαλος παίκτης έχει ήδη μια κάρτα εξόδου από την φυλακή");
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
             }
         }
@@ -2326,6 +2473,8 @@ public class GameController {
                 alert.setTitle("Monopoly");
                 alert.setHeaderText("Αποτέλεσμα Ενέργειας");
                 alert.setContentText("Θες να πουλήσεις την κάρτα εξόδου?");
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
 
                 ButtonType Yes = new ButtonType("Ναι");
                 ButtonType No = new ButtonType("Όχι");
@@ -2348,6 +2497,8 @@ public class GameController {
                             alert2.setTitle("Monopoly");
                             alert2.setHeaderText("Αποτέλεσμα Ενέργειας");
                             alert2.setContentText("Πούλησες την κάρτα εξόδου σου για 80€  στον αντίπαλο.");
+                            Stage stage2 = (Stage) alert2.getDialogPane().getScene().getWindow();
+                            stage2.getIcons().add(new Image("monopoly-man.jpg"));
 
                             ButtonType Cont = new ButtonType("Οκ");
                             // Προσθήκη των κουμπιών επιλογών στο alert
@@ -2360,6 +2511,8 @@ public class GameController {
                 alert.setTitle("Monopoly");
                 alert.setHeaderText("Αποτέλεσμα Ενέργειας");
                 alert.setContentText("Δεν έχεις κάρτα εξόδου από την φυλακή.");
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
             }
             else if (CheckPrison1.isSelected()){
@@ -2367,6 +2520,8 @@ public class GameController {
                 alert.setTitle("Monopoly");
                 alert.setHeaderText("Αποτέλεσμα Ενέργειας");
                 alert.setContentText("Ο αντίπαλος παίκτης έχει ήδη μια κάρτα εξόδου από την φυλακή");
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
             }
         }
@@ -2383,7 +2538,8 @@ public class GameController {
             content.setTextAlignment(TextAlignment.CENTER);
             content.setWrappingWidth(400);
             alert.getDialogPane().setContent(content);
-
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image("monopoly-man.jpg"));
             ButtonType Yes = new ButtonType("Ναι");
             ButtonType No = new ButtonType("Όχι");
             alert.getButtonTypes().setAll(Yes, No);
@@ -2420,7 +2576,8 @@ public class GameController {
         content.setTextAlignment(TextAlignment.CENTER);
         content.setWrappingWidth(400);
         alert.getDialogPane().setContent(content);
-
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image("monopoly-man.jpg"));
         ButtonType Yes = new ButtonType("Ναι");
         ButtonType No = new ButtonType("Όχι");
         // Προσθήκη των κουμπιών επιλογών στο alert
@@ -2445,6 +2602,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
             } else {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -2455,6 +2614,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
 
                 // Μετάβαση στη νέα σκηνή
@@ -2475,6 +2636,9 @@ public class GameController {
             content.setTextAlignment(TextAlignment.CENTER);
             content.setWrappingWidth(400);
             alert.getDialogPane().setContent(content);
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image("monopoly-man.jpg"));
+
             alert.showAndWait();
             } else {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -2485,6 +2649,8 @@ public class GameController {
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
 
                 // Μετάβαση στη νέα σκηνή
