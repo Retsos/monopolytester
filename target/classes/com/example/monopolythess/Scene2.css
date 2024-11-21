@@ -7,6 +7,7 @@
 /* ----- Περιοχή Παικτών (Πάνω Δεξιά) ----- */
 .player-area {
     -fx-background-color: #EAF7DF; /* Απαλό πράσινο */
+    -fx-background-radius: 10;
     -fx-border-color: #B5CDA3; /* Απαλό σκούρο πράσινο */
     -fx-border-radius: 10px;
     -fx-border-width: 2px;

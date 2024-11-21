@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1500.0" styleClass="root" stylesheets="@Options.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1500.0" styleClass="root" stylesheets="@Options.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.monopolythess.example.OptionsSceneController">
    <top>
       <Label alignment="BOTTOM_CENTER" prefHeight="55.0" prefWidth="186.0" styleClass="options-title" text="Επιλογές" textAlignment="CENTER" BorderPane.alignment="CENTER">
          <font>
@@ -25,9 +25,9 @@
       </Button>
    </bottom>
    <center>
-      <Accordion maxWidth="800.0" minWidth="800.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+      <Accordion maxWidth="800.0" minWidth="800.0" prefWidth="800.0" stylesheets="@Options.css" BorderPane.alignment="CENTER">
         <panes>
-          <TitledPane animated="false" prefHeight="586.0" prefWidth="1420.0" text="Κανόνες Παιχνιδιού">
+          <TitledPane animated="false" prefHeight="586.0" prefWidth="1420.0" stylesheets="@Options.css" text="Κανόνες Παιχνιδιού">
                <content>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
@@ -36,7 +36,7 @@
                   </VBox>
                </content>
             </TitledPane>
-          <TitledPane animated="false" text="Κουμπιά Παιχνιδιού">
+          <TitledPane animated="false" stylesheets="@Options.css" text="Κουμπιά Παιχνιδιού">
                <content>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>

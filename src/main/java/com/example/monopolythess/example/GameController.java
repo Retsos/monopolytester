@@ -584,7 +584,7 @@ public class GameController {
                 alert.setTitle("Κάρτα Απόφασης");
                 alert.setHeaderText("Αποτέλεσμα Κάρτας");
 
-                Text content = new Text("Φορολογία για την ανακατασκευή των οδών. Πλήρωσε 20€ για κάθε σπίτι και 50€ για κάθε ξενοδοχείο. Σύνολο: \"+Synolo");
+                Text content = new Text("Φορολογία για την ανακατασκευή των οδών. Πλήρωσε 20€ για κάθε σπίτι και 50€ για κάθε ξενοδοχείο. Σύνολο: "+Synolo);
                 content.setTextAlignment(TextAlignment.CENTER);
                 content.setWrappingWidth(400);
                 alert.getDialogPane().setContent(content);
@@ -1250,6 +1250,7 @@ public class GameController {
         Player nextPlayer= (turn == 2) ? player1 : player2;
         if (!currentPlayer.isPrison()) {
             cardType.setText("Τύπος Κάρτας: " + Board[newPos].getType());
+            CardName.setText("");
             switch (Board[newPos].getType()) {
                 case "Φόρος" -> {
                     CardName.setText("Ονομασία Περιοχής: " + Board[newPos].getCardName());
@@ -1369,7 +1370,6 @@ public class GameController {
                 }
                 case "Σημείο" -> {
                     CardName.setText("Ονομασία Περιοχής: " + Board[newPos].getCardName());
-
                     if (Board[newPos] instanceof StartPos) {
                         LeftLabelReset();
                         CostOfArea.setText("");
@@ -1392,51 +1392,17 @@ public class GameController {
                         playbutton.setDisable(true);
                         EndTurn.setDisable(false);
 
-                        currentPlayer.setPrison(true);
-                        currentPlayer.setDiplesZaries(0);
-                        // Πρώτο μήνυμα για τη φυλακή
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Monopoly");
                         alert.setHeaderText("Σε έπιασε η αστυνομία");
                         alert.setContentText("Πήγαινε κατευθείαν στη φυλακή");
                         alert.showAndWait();
+
+                        currentPlayer.setPrison(true);
+                        currentPlayer.setDiplesZaries(0);
+                        currentPlayer.setCurrentPos(10);
                         currentPlayer.getStack().setLayoutY(Board[10].getY());
                         currentPlayer.getStack().setLayoutX(Board[10].getX());
-                        currentPlayer.setCurrentPos(10);
-
-                        Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION);
-                        alert2.setTitle("Monopoly");
-                        alert2.setHeaderText("Επίλεξε μία από τις παρακάτω επιλογές:");
-                        alert2.setContentText("Αν επιλέξεις να μην πληρώσεις και δεν καταφέρεις να βγεις μέσα στους\n" +
-                                "επόμενους 3 γύρους, τότε στον 4ο γύρω θα πληρώσεις 100€  και θα βγείς αυτόματα.");
-
-                        // Ορισμός επιλογών για το alert
-                        ButtonType payToExit = new ButtonType("Πλήρωσε 100€  για να βγεις");
-                        ButtonType waitForTurns = new ButtonType("Περίμενε 3 γύρους");
-
-                        // Προσθήκη των κουμπιών επιλογών στο alert
-                        alert2.getButtonTypes().setAll(payToExit, waitForTurns);
-
-                        // Έλεγχος της επιλογής του παίκτη
-                        Optional<ButtonType> result = alert2.showAndWait();
-                        if (result.isPresent()) {
-                            if (result.get() == payToExit) {
-                                if (currentPlayer.getMoney() >= 100) {
-                                    currentPlayer.setMoney(currentPlayer.getMoney() - 100);
-                                    if (currentPlayer == player1)
-                                        money1.setText("Χρήματα: " + player1.getMoney());
-                                    else money2.setText("Χρήματα: " + player2.getMoney());
-                                    currentPlayer.setPrison(false);
-                                } else {
-                                    // Ενημέρωση ότι ο παίκτης δεν έχει αρκετά χρήματα
-                                    Alert noMoneyAlert = new Alert(Alert.AlertType.ERROR);
-                                    noMoneyAlert.setTitle("Monopoly");
-                                    noMoneyAlert.setHeaderText("Δεν έχεις αρκετά χρήματα!");
-                                    noMoneyAlert.setContentText("Χρειάζεσαι 100€  για να πληρώσεις την εγγύηση.");
-                                    noMoneyAlert.showAndWait();
-                                }
-                            }
-                        }
                     } else if (Board[newPos] instanceof FreePass) {
                         LeftLabelReset();
                         CostOfArea.setText("");
@@ -1447,8 +1413,9 @@ public class GameController {
                     }
                 }
                 case "Απόφαση" -> {
+                    CardName.setText("");
                     if (Board[newPos] instanceof Apofasi) {
-                        if (countApofaseis<= 10 && !Apofaseis.isEmpty()) {
+                        if (countApofaseis<= 13 && !Apofaseis.isEmpty()) {
                             // Καθαρισμός UI για την εντολή
                             LeftLabelReset();
                             CostOfArea.setText("");
@@ -1485,8 +1452,9 @@ public class GameController {
                     }
                 }
                 case "Εντολή" -> {
+                    CardName.setText("");
                     if (Board[newPos] instanceof Entoli ) {
-                        if (countEntoles   <= 10 && !Entoles.isEmpty()) {
+                        if (countEntoles   <= 13 && !Entoles.isEmpty()) {
                             // Καθαρισμός UI για την εντολή
                             LeftLabelReset();
                             CostOfArea.setText("");
@@ -1523,6 +1491,7 @@ public class GameController {
                     }
                 }
                 case null, default -> {
+                    CardName.setText("");
                     LeftLabelReset();
                     CostOfArea.setText("");
                     IsBought.setText("");
@@ -1604,7 +1573,6 @@ public class GameController {
                         player1.setRounds(0);
                         player1.setCurrentPos(10);
                         MovePlayer(player1,dice1Number+dice2Number);
-                        EndOfTurn();
                     }
                 }
             }
@@ -1630,8 +1598,7 @@ public class GameController {
                         player2.setRounds(0);
                         player2.setCurrentPos(10);
                         MovePlayer(player2,dice1Number+dice2Number);
-                        EndOfTurn();
-                    }
+                        }
                 }
             }
         }
@@ -2412,7 +2379,7 @@ public class GameController {
             alert.setHeaderText("Αποτέλεσμα Ενέργειας");
 
             Text content = new Text("Έχεις επιλέξει να πουλήσεις την Οδό: " + odos.getCardName() +
-                    " για " + odos.getTimi() + "€. Θες να συνεχίσεις με τη διαδικασία;");
+                    " για " + ((odos.getTimi()/2) + odos.getSpitia()) + "€. Θες να συνεχίσεις με τη διαδικασία;");
             content.setTextAlignment(TextAlignment.CENTER);
             content.setWrappingWidth(400);
             alert.getDialogPane().setContent(content);

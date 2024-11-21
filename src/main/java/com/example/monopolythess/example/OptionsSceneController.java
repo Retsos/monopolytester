@@ -8,10 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
 public class OptionsSceneController {
-
-
     public void Back(ActionEvent event) throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(GameController.class.getResource("/com/example/monopolythess/hello-view.fxml"));
         Parent root1 = fxmlLoader.load();
@@ -21,6 +18,4 @@ public class OptionsSceneController {
         stage.setScene(scene);
         stage.show();
     }
-
-
 }

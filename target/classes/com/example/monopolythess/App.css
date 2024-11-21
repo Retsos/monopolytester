@@ -4,7 +4,7 @@
 }
 
 #FirstIMG {
-    -fx-margin: 0 auto; /* Κεντράρισμα της εικόνας */
+    -fx-alignment: center; /* Κεντράρισμα της εικόνας */
 }
 
 .button {
