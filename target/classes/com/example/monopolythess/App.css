@@ -1,10 +1,10 @@
 .root {
     -fx-alignment: center; /* Κεντράρισμα όλων των παιδιών */
-    -fx-background-color: linear-gradient(to bottom, #FDF6E3, #FFFFFF); /* Gradient από μπεζ σε λευκό */
+        -fx-background-color: linear-gradient(to bottom, #FDF6E3, #FFFFFF); /* Gradient από μπεζ σε λευκό */
 }
 
 #FirstIMG {
-    -fx-alignment: center; /* Κεντράρισμα της εικόνας */
+    -fx-margin: 0 ; /* Κεντράρισμα της εικόνας */
 }
 
 .button {
