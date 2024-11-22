@@ -37,7 +37,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="171.0" layoutY="122.0" rotate="-45.0" text="Εντολή">
+                  <Label layoutX="176.0" layoutY="131.0" rotate="-45.0" text="Εντολή">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -100,30 +100,30 @@
                   <Label fx:id="Galazio1" layoutX="265.0" layoutY="586.0" text="Label" />
                   <Label fx:id="Galazio2" layoutX="145.0" layoutY="586.0" text="Label" />
                   <Label fx:id="Galazio3" layoutX="86.0" layoutY="586.0" text="label" />
-                  <Label fx:id="Mov1" layoutX="-10.0" layoutY="517.0" text="Label" />
+                  <Label fx:id="Mov1" layoutX="-7.0" layoutY="517.0" text="Label" />
                   <Label fx:id="Mov2" layoutX="-2.0" layoutY="400.0" text="Label" />
-                  <Label fx:id="Mov3" layoutX="-2.0" layoutY="344.0" text="Label" />
+                  <Label fx:id="Mov3" layoutX="-2.0" layoutY="341.0" text="Label" />
                   <Label fx:id="Portokali1" layoutX="4.0" layoutY="221.0" text="Label" />
-                  <Label fx:id="Portokali2" layoutX="-6.0" layoutY="97.0" text="Label" />
-                  <Label fx:id="Portokali3" layoutX="-10.0" layoutY="39.0" text="Label" />
+                  <Label fx:id="Portokali2" layoutX="-2.0" layoutY="97.0" text="Label" />
+                  <Label fx:id="Portokali3" layoutX="-8.0" layoutY="39.0" text="Label" />
                   <Label fx:id="Kokkino1" layoutX="90.0" layoutY="-58.0" text="Label" />
                   <Label fx:id="Kokkino2" layoutX="205.0" layoutY="-58.0" text="Label" />
                   <Label fx:id="Kokkino3" layoutX="270.0" layoutY="-58.0" text="Label" />
-                  <Label fx:id="Kitrino1" layoutX="383.0" layoutY="-56.0" text="Label" />
+                  <Label fx:id="Kitrino1" layoutX="384.0" layoutY="-56.0" text="Label" />
                   <Label fx:id="Kitrino2" layoutX="450.0" layoutY="-56.0" text="Label" />
                   <Label fx:id="Kitrino3" layoutX="572.0" layoutY="-56.0" text="Label" />
-                  <Label fx:id="Prasino1" layoutX="660.0" layoutY="30.0" text="Label" />
-                  <Label fx:id="Prasino2" layoutX="652.0" layoutY="89.0" text="Label" />
-                  <Label fx:id="Prasino3" layoutX="660.0" layoutY="212.0" text="Label" />
-                  <Label fx:id="Mple1" layoutX="660.0" layoutY="392.0" text="Label" />
-                  <Label fx:id="Mple2" layoutX="657.0" layoutY="517.0" text="Label" />
+                  <Label fx:id="Prasino1" layoutX="660.0" layoutY="36.0" text="Label" />
+                  <Label fx:id="Prasino2" layoutX="652.0" layoutY="96.0" text="Label" />
+                  <Label fx:id="Prasino3" layoutX="660.0" layoutY="216.0" text="Label" />
+                  <Label fx:id="Mple1" layoutX="660.0" layoutY="400.0" text="Label" />
+                  <Label fx:id="Mple2" layoutX="655.0" layoutY="517.0" text="Label" />
                   <Label layoutX="389.0" layoutY="561.0" text="Φόρος">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
                   <Label layoutX="397.0" layoutY="578.0" text="200$" />
-                  <StackPane fx:id="CarStack" layoutX="385.0" layoutY="585.0">
+                  <StackPane fx:id="CarStack" layoutX="5.0" layoutY="450.0">
                      <children>
                         <ImageView blendMode="MULTIPLY" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -140,14 +140,7 @@
                         </ImageView>
                      </children>
                   </StackPane>
-                  <StackPane fx:id="AgkyraStack" layoutX="392.0" layoutY="585.0">
-                     <children>
-                        <ImageView blendMode="MULTIPLY" fitHeight="50.0" fitWidth="50.0" layoutX="564.0" layoutY="550.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../Agkyra.png" />
-                           </image>
-                        </ImageView>
-                     </children></StackPane>
+                  <StackPane fx:id="AgkyraStack" layoutX="392.0" layoutY="585.0" />
                   <StackPane fx:id="HatStack" layoutX="244.0" layoutY="240.0" minHeight="40.0" minWidth="40.0">
                      <children>
                         <ImageView blendMode="MULTIPLY" fitHeight="40.0" fitWidth="50.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" smooth="false">
@@ -160,6 +153,11 @@
                         </ImageView>
                      </children>
                   </StackPane>
+                  <ImageView blendMode="MULTIPLY" fitHeight="50.0" fitWidth="50.0" layoutX="311.0" layoutY="539.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Agkyra.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Group>
          </children>
@@ -173,7 +171,7 @@
                <children>
                   <AnchorPane fx:id="Player1Side" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="277.0" prefWidth="375.0">
                      <children>
-                        <Label fx:id="displayname1" layoutX="40.0" text="Παίκτης 1 : " AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="0.0">
+                        <Label fx:id="displayname1" layoutX="40.0" text="Παίκτης 1 : Γιαννης Χατζηαντωνιου" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="0.0">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -191,7 +189,7 @@
                                  </font></Label>
                            </children>
                         </Group>
-                        <Label fx:id="money1" layoutX="243.0" layoutY="3.0" text="Χρήματα:" AnchorPane.leftAnchor="243.0" AnchorPane.topAnchor="3.0">
+                        <Label fx:id="money1" layoutX="243.0" layoutY="3.0" text="Χρήματα:" AnchorPane.leftAnchor="225.0" AnchorPane.topAnchor="26.0">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -241,6 +239,9 @@
                                              </cursor>
                                           </Button>
                                        </children>
+                                       <padding>
+                                          <Insets left="7.0" />
+                                       </padding>
                                     </VBox>
                                  </children>
                               </AnchorPane>
@@ -304,7 +305,7 @@
                                  </font></Label>
                            </children>
                         </Group>
-                        <Label fx:id="money2" layoutX="239.0" layoutY="3.0" text="Χρήματα:" AnchorPane.leftAnchor="239.0" AnchorPane.topAnchor="3.0">
+                        <Label fx:id="money2" layoutX="239.0" layoutY="3.0" text="Χρήματα:" AnchorPane.leftAnchor="225.0" AnchorPane.topAnchor="26.0">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -354,6 +355,9 @@
                                              </cursor>
                                           </Button>
                                        </children>
+                                       <padding>
+                                          <Insets right="7.0" />
+                                       </padding>
                                     </VBox>
                                  </children>
                               </AnchorPane>

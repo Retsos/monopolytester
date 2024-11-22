@@ -196,6 +196,7 @@ public class GameController {
     }
     // Αρχικοποίηση των δεδομένων του παιχνιδιού
     public void initializeGame(String username1, String username2,Avatar Avatar1,Avatar Avatar2) {
+        //hide the pics at the start
         Car1.setOpacity(0);
         Car2.setOpacity(0);
         Horse1.setOpacity(0);
@@ -249,6 +250,7 @@ public class GameController {
             }
         }
 
+        //show the chosen pics
         player1.getStack().setOpacity(1);
         player2.getStack().setOpacity(1);
 
@@ -1215,7 +1217,7 @@ public class GameController {
          odos25 = new Odoi("ΟΣΕ","Σταθμός",200,false,37,263,"","Grey");
          odos26 = new Odoi("ΜΕΤΡΟ","Σταθμός",200,false,330,-54,"","Grey");
          odos27 = new Odoi("SKG","Σταθμός",200,false,654,267,"","Grey");
-         odos28 = new Odoi("Εταιρία Ρεύματος","Εταιρία",150,false,5,440,"","White");
+         odos28 = new Odoi("Εταιρία Ρεύματος","Εταιρία",150,false,5,450,"","White");
          odos29 = new Odoi("Εταιρία Ύδρευσης ","Εταιρία",250,false,512,-54,"","White");
         //KARTES APOFASIS/ENTOLIS
          odos30 = new Apofasi("Απόφαση","Απόφαση",512,585);
