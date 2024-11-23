@@ -215,37 +215,37 @@ public class GameController {
 
         switch (Avatar1.getName()) {
             case "Αμάξι" ->{
-                player1 = new Player(1300, username1, cards1, CarStack, 0, Agores1, 0, 0, money1, false, 0, 0, 0, 0);
+                player1 = new Player(50, username1, cards1, CarStack, 0, Agores1, 0, 0, money1, false, 0, 0, 0, 0);
                 Car1.setOpacity(1);
             }
             case "Καπέλο" ->{
-                player1 = new Player(1300, username1, cards1, HatStack, 0, Agores1, 0, 0, money1, false, 0, 0, 0, 0);
+                player1 = new Player(50, username1, cards1, HatStack, 0, Agores1, 0, 0, money1, false, 0, 0, 0, 0);
                 Hat1.setOpacity(1);
             }
             case "Άλογο" ->{
-                player1 = new Player(1300, username1, cards1, HorseStack, 0, Agores1, 0, 0, money1, false, 0, 0, 0, 0);
+                player1 = new Player(50, username1, cards1, HorseStack, 0, Agores1, 0, 0, money1, false, 0, 0, 0, 0);
                 Horse1.setOpacity(1);
             }
             case null, default ->{
-                player1 = new Player(1300, username1, cards1, AgkyraStack, 0, Agores1, 0, 0, money1, false, 0, 0, 0, 0);
+                player1 = new Player(50, username1, cards1, AgkyraStack, 0, Agores1, 0, 0, money1, false, 0, 0, 0, 0);
                 Anchor1.setOpacity(1);
             }
         }
         switch (Avatar2.getName()) {
             case "Αμάξι" ->{
-                player2 = new Player(1300, username2, cards2, CarStack, 0, Agores2, 0, 0, money2, false, 0, 0, 0, 0);
+                player2 = new Player(50, username2, cards2, CarStack, 0, Agores2, 0, 0, money2, false, 0, 0, 0, 0);
                 Car2.setOpacity(1);
             }
             case "Καπέλο" ->{
-                player2 = new Player(1300, username2, cards2, HatStack, 0, Agores2, 0, 0, money2, false, 0, 0, 0, 0);
+                player2 = new Player(50, username2, cards2, HatStack, 0, Agores2, 0, 0, money2, false, 0, 0, 0, 0);
                 Hat2.setOpacity(1);
             }
             case "Άλογο" ->{
-                player2 = new Player(1300, username2, cards2, HorseStack, 0, Agores2, 0, 0, money2, false, 0, 0, 0, 0);
+                player2 = new Player(50, username2, cards2, HorseStack, 0, Agores2, 0, 0, money2, false, 0, 0, 0, 0);
                 Horse2.setOpacity(1);
             }
             case null, default ->{
-                player2 = new Player(1300, username2, cards2, AgkyraStack, 0, Agores2, 0, 0, money2, false, 0, 0, 0, 0);
+                player2 = new Player(50, username2, cards2, AgkyraStack, 0, Agores2, 0, 0, money2, false, 0, 0, 0, 0);
                 Anchor2.setOpacity(1);
             }
         }
@@ -268,7 +268,7 @@ public class GameController {
 
         if (player2.getStack() != null) {
             player2.getStack().setLayoutX(Board[0].getX());
-            player2.getStack().setLayoutY(Board[0].getY()+20);
+            player2.getStack().setLayoutY(Board[0].getY());
         } else {
             System.out.println("Η εικόνα για τον παίκτη 2 δεν έχει αρχικοποιηθεί σωστά!");
         }
@@ -841,7 +841,6 @@ public class GameController {
             }
         };
         Apofaseis.push(decision1);
-        Apofaseis.push(decision2);
         Apofaseis.push(decision3);
         Apofaseis.push(decision4);
         Apofaseis.push(decision5);
@@ -853,6 +852,8 @@ public class GameController {
         Apofaseis.push(decision11);
         Apofaseis.push(decision12);
         Apofaseis.push(decision13);
+        Apofaseis.push(decision2);
+
     }
     public void CreateEntoles(){
         Entoli entoli1 = new Entoli("Πήγαινε στην εκκίνηση Παίρνεις 200€", "Εντολή") {
@@ -1597,7 +1598,7 @@ public class GameController {
         newPos = oldPos + sum;
         if (newPos >= 40) {// Αν το νέο pos υπερβαίνει το 39, υπολογιζω το υπόλοιπο για να επανέλθει στην αρχή
             newPos = newPos % 40;
-            player.setMoney(player.getMoney() + 200);  // Αν ο παίκτης πέρασε από την αφετηρία, παιρνει € 200
+            //player.setMoney(player.getMoney() + 200);  // Αν ο παίκτης πέρασε από την αφετηρία, παιρνει € 200
             player.getShowmoney().setText("Χρήματα: "+player.getMoney());
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -2595,7 +2596,8 @@ public class GameController {
     }
     public void CheckMoney(Player player){
         if (player==player1){
-            if (player1.getCards().length > 0) {
+            if (!Agores1.getItems().isEmpty()) {
+                System.out.println("XREOKoPEIA");
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Monopoly");
                 alert.setHeaderText("Αποτέλεσμα Ενέργειας");
@@ -2629,19 +2631,20 @@ public class GameController {
             }
         }
         else {
-           if(player2.getCards().length > 0) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Monopoly");
-            alert.setHeaderText("Αποτέλεσμα Ενέργειας");
+           if(!Agores2.getItems().isEmpty()) {
+               System.out.println("XREOKoPEIA");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Monopoly");
+                alert.setHeaderText("Αποτέλεσμα Ενέργειας");
 
-            Text content = new Text("Πούλησε κάποια απο τις περιοχές σου για να πάρεις περισσότερα χρήματα!");
-            content.setTextAlignment(TextAlignment.CENTER);
-            content.setWrappingWidth(400);
-            alert.getDialogPane().setContent(content);
-            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-            stage.getIcons().add(new Image("monopoly-man.jpg"));
+                Text content = new Text("Πούλησε κάποια απο τις περιοχές σου για να πάρεις περισσότερα χρήματα!");
+                content.setTextAlignment(TextAlignment.CENTER);
+                content.setWrappingWidth(400);
+                alert.getDialogPane().setContent(content);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("monopoly-man.jpg"));
 
-            alert.showAndWait();
+                alert.showAndWait();
             } else {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Monopoly");
