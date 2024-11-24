@@ -143,50 +143,60 @@ public class GameController {
     Scene Newscene;
     //Zaria
     public void Dice() {
-        if (endofround){
+        if (endofround) {
             playbutton.setDisable(true);
             YesBuy.setDisable(true);
             NoBuy.setDisable(true);
+
             Thread thread = new Thread(() -> {
                 System.out.println("Thread Running");
                 System.out.println(counter++);
-                int finalDice1 = 0;
-                int finalDice2 = 0;
+
                 try {
-                    for (int i = 0; i < 20; i++) {
+                    for (int i = 0; i < 15; i++) {
                         dice1Number = random.nextInt(6) + 1;
                         dice2Number = random.nextInt(6) + 1;
-                        String dice1Path = Objects.requireNonNull(getClass().getResource("/dice" + dice1Number + ".png")).toExternalForm();
-                        String dice2Path = Objects.requireNonNull(getClass().getResource("/dice" + dice2Number + ".png")).toExternalForm();
+
+                        String dice1Path = getDiceImagePath(dice1Number);
+                        String dice2Path = getDiceImagePath(dice2Number);
+
                         Platform.runLater(() -> {
                             dice1.setImage(new Image(dice1Path));
                             dice2.setImage(new Image(dice2Path));
                         });
+
                         Thread.sleep(50);
-                        if (i == 14) {
-                            finalDice1 = dice1Number;
-                            finalDice2 = dice2Number;
-                        }
                     }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } finally {
-                    diceSum = finalDice1 + finalDice2;
+
+                    // Υπολογισμός τελικών ζαριών μετά τη λήξη του βρόχου
+                    diceSum = dice1Number + dice2Number;
+                    doubles = dice1Number == dice2Number;
+
                     System.out.println("Final Dice Sum: " + diceSum);
 
-                    doubles= finalDice2 == finalDice1;
                     Platform.runLater(() -> {
                         playbutton.setDisable(false);
                         YesBuy.setDisable(false);
                         NoBuy.setDisable(false);
-                        endofround=false;
+                        endofround = false;
                         EndTurn.setDisable(true);
-                        StartGame(diceSum); // Pass the final dice sum to StartGame
+                        StartGame(diceSum); // Εκκίνηση παιχνιδιού με το άθροισμα
+                    });
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (Exception e) {
+                    Platform.runLater(() -> {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Σφάλμα");
+                        alert.setHeaderText("Αδυναμία εκτέλεσης ζαριών");
+                        alert.setContentText("Υπήρξε ένα σφάλμα κατά τη διαδικασία. Παρακαλώ δοκιμάστε ξανά.");
+                        alert.showAndWait();
                     });
                 }
             });
+
             thread.start();
-        }else {
+        } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Controller");
             alert.setHeaderText("Λάθος Ενέργεια");
@@ -194,6 +204,16 @@ public class GameController {
             alert.showAndWait();
         }
     }
+
+    // Μέθοδος για λήψη του path εικόνας
+    private String getDiceImagePath(int diceNumber) {
+        try {
+            return Objects.requireNonNull(getClass().getResource("/dice" + diceNumber + ".png")).toExternalForm();
+        } catch (NullPointerException e) {
+            throw new RuntimeException("Η εικόνα για το ζάρι " + diceNumber + " δεν βρέθηκε.");
+        }
+    }
+
     // Αρχικοποίηση των δεδομένων του παιχνιδιού
     public void initializeGame(String username1, String username2,Avatar Avatar1,Avatar Avatar2) {
         //hide the pics at the start
@@ -215,37 +235,37 @@ public class GameController {
 
         switch (Avatar1.getName()) {
             case "Αμάξι" ->{
-                player1 = new Player(50, username1, cards1, CarStack, 0, Agores1, 0, 0, money1, false, 0, 0, 0, 0);
+                player1 = new Player(1300, username1, cards1, CarStack, 0, Agores1, 0, 0, money1, false, 0, 0, 0, 0);
                 Car1.setOpacity(1);
             }
             case "Καπέλο" ->{
-                player1 = new Player(50, username1, cards1, HatStack, 0, Agores1, 0, 0, money1, false, 0, 0, 0, 0);
+                player1 = new Player(1300, username1, cards1, HatStack, 0, Agores1, 0, 0, money1, false, 0, 0, 0, 0);
                 Hat1.setOpacity(1);
             }
             case "Άλογο" ->{
-                player1 = new Player(50, username1, cards1, HorseStack, 0, Agores1, 0, 0, money1, false, 0, 0, 0, 0);
+                player1 = new Player(1300, username1, cards1, HorseStack, 0, Agores1, 0, 0, money1, false, 0, 0, 0, 0);
                 Horse1.setOpacity(1);
             }
             case null, default ->{
-                player1 = new Player(50, username1, cards1, AgkyraStack, 0, Agores1, 0, 0, money1, false, 0, 0, 0, 0);
+                player1 = new Player(1300, username1, cards1, AgkyraStack, 0, Agores1, 0, 0, money1, false, 0, 0, 0, 0);
                 Anchor1.setOpacity(1);
             }
         }
         switch (Avatar2.getName()) {
             case "Αμάξι" ->{
-                player2 = new Player(50, username2, cards2, CarStack, 0, Agores2, 0, 0, money2, false, 0, 0, 0, 0);
+                player2 = new Player(1300, username2, cards2, CarStack, 0, Agores2, 0, 0, money2, false, 0, 0, 0, 0);
                 Car2.setOpacity(1);
             }
             case "Καπέλο" ->{
-                player2 = new Player(50, username2, cards2, HatStack, 0, Agores2, 0, 0, money2, false, 0, 0, 0, 0);
+                player2 = new Player(1300, username2, cards2, HatStack, 0, Agores2, 0, 0, money2, false, 0, 0, 0, 0);
                 Hat2.setOpacity(1);
             }
             case "Άλογο" ->{
-                player2 = new Player(50, username2, cards2, HorseStack, 0, Agores2, 0, 0, money2, false, 0, 0, 0, 0);
+                player2 = new Player(1300, username2, cards2, HorseStack, 0, Agores2, 0, 0, money2, false, 0, 0, 0, 0);
                 Horse2.setOpacity(1);
             }
             case null, default ->{
-                player2 = new Player(50, username2, cards2, AgkyraStack, 0, Agores2, 0, 0, money2, false, 0, 0, 0, 0);
+                player2 = new Player(1300, username2, cards2, AgkyraStack, 0, Agores2, 0, 0, money2, false, 0, 0, 0, 0);
                 Anchor2.setOpacity(1);
             }
         }
@@ -594,6 +614,7 @@ public class GameController {
                 Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
                 stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
+
                 if (player.getMoney()>=100){
                     player.setMoney(player.getMoney()-100);
                     player.getShowmoney().setText("Χρήματα: "+player.getMoney());
@@ -2597,7 +2618,6 @@ public class GameController {
     public void CheckMoney(Player player){
         if (player==player1){
             if (!Agores1.getItems().isEmpty()) {
-                System.out.println("XREOKoPEIA");
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Monopoly");
                 alert.setHeaderText("Αποτέλεσμα Ενέργειας");
@@ -2646,7 +2666,7 @@ public class GameController {
 
                 alert.showAndWait();
             } else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+               Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Monopoly");
                 alert.setHeaderText("Αποτέλεσμα Ενέργειας");
 
@@ -2664,7 +2684,7 @@ public class GameController {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }
+           }
         }
     }
     public void GetNewScene() throws IOException {
