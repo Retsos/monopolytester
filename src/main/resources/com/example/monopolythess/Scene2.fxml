@@ -477,15 +477,20 @@
                            <font>
                               <Font size="16.0" />
                            </font></Label>
-                        <Label fx:id="CostOfRent" layoutX="486.0" layoutY="173.0" text="Κόστος Ενοικίου">
+                        <Label fx:id="CostOfRent" layoutX="500.0" layoutY="209.0" text="Κόστος Ενοικίου">
                            <font>
                               <Font size="22.0" />
                            </font></Label>
                         <Label layoutX="616.0" layoutY="29.0" />
-                        <Label fx:id="PayNotPayRent" layoutX="492.79999999999995" layoutY="51.0" prefHeight="27.0" prefWidth="328.0" text="Η περιοχή ΔΕΝ/&quot;&quot; σου ανήκει πληρώνεις ενοίκιο" AnchorPane.leftAnchor="420.0">
+                        <Label fx:id="PayNotPayRent" layoutX="427.0" layoutY="36.0" prefHeight="27.0" prefWidth="328.0" text="Η περιοχή ΔΕΝ/&quot;&quot; σου ανήκει πληρώνεις ενοίκιο" AnchorPane.leftAnchor="427.0">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
+                        <Button fx:id="PayTax" layoutX="494.0" layoutY="69.0" maxWidth="425.0" minWidth="176.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="176.0" styleClass="btn-action" stylesheets="@Scene2.css" text="Πλήρωσε Φόρο">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
                      </children>
                   </AnchorPane>
                </content>

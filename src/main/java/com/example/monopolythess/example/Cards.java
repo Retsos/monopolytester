@@ -17,36 +17,22 @@ public class Cards {
         this.Type = Type;
     }
 
-    public boolean Do(Player player){
-        return true;
-    };
+    public boolean  Do(Player player){
+        return true ;
+    }
+    public  void DoTax(Player player){
+    }
 
     public int getX() {
         return x;
     }
-
     public int getY() {
         return y;
     }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
     public String getCardName() {
         return CardName;
     }
     public String getType() {
         return Type;
-    }
-    public void setCardName(String cardName) {
-        CardName = cardName;
-    }
-    public void setType(String type) {
-        Type = type;
     }
 }
