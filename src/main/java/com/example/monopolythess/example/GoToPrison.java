@@ -7,5 +7,7 @@ public class GoToPrison extends Cards{
     }
 
     @Override
-    public void Do(Player player){}
+    public boolean Do(Player player){
+        return true;
+    }
 }

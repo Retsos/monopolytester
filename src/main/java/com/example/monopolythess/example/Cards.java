@@ -17,8 +17,8 @@ public class Cards {
         this.Type = Type;
     }
 
-    public void Do(Player player){
-
+    public boolean Do(Player player){
+        return true;
     };
 
     public int getX() {

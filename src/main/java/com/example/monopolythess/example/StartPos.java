@@ -7,6 +7,8 @@ public class StartPos extends Cards{
         super(cardName, Type, x, y);
     }
     @Override
-    public void Do(Player player){};
+    public boolean Do(Player player){
+        return true;
+    }
 
 }
