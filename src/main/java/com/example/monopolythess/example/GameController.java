@@ -1910,7 +1910,7 @@ public class GameController {
                         YesBuy.setDisable(true);
                         NoBuy.setDisable(true);
                         CheckForDoubles();
-                    } else if (ForosIsUp) {
+                    } else {
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Monopoly");
                         alert.setHeaderText("Αποτέλεσμα Ενέργειας");
