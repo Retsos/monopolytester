@@ -469,7 +469,7 @@
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
-                        <Label layoutX="256.0" layoutY="60.0" text="Αγοράζεις ?">
+                        <Label fx:id="Buying" layoutX="256.0" layoutY="60.0" text="Αγοράζεις ?">
                            <font>
                               <Font size="20.0" />
                            </font></Label>

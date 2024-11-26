@@ -21,8 +21,6 @@ public class GameController {
     @FXML
     private ImageView dice1, dice2;
     @FXML
-    private Button playbutton;
-    @FXML
     private Label Galazio1;
     @FXML
     private Label Galazio2;
@@ -101,7 +99,7 @@ public class GameController {
     @FXML
     private Label fullset2;
     @FXML
-    private Label Houses1, Houses2, CostOfHouse1, CostOfHouse2;
+    private Label Houses1, Houses2, CostOfHouse1, CostOfHouse2,Buying;
     @FXML
     private Button YesBuy, SellCard1, SellCard2;
     @FXML
@@ -140,9 +138,12 @@ public class GameController {
     @FXML
     Scene Newscene;
     private int posoProsPlirwmi=0;
+    private boolean ForosIsUp,RentIsUp,Buy,NotBuy;
+    private int rounds=0;
     //Zaria
     public void Dice() {
         if (endofround) {
+            endofround = false;
             YesBuy.setDisable(true);
             NoBuy.setDisable(true);
             Thread thread = new Thread(() -> {
@@ -168,12 +169,13 @@ public class GameController {
                     doubles = dice1Number == dice2Number;
                     System.out.println("Final Dice Sum: " + diceSum);
                     Platform.runLater(() -> {
-                        playbutton.setDisable(false);
                         YesBuy.setDisable(false);
                         NoBuy.setDisable(false);
-                        endofround = false;
-                        EndTurn.setDisable(true);
+                        Buy=false;
+                        NotBuy=false;
                         StartGame(diceSum);
+                        rounds++;
+                        if (rounds>0) EndTurn.setDisable(false);
                     });
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -189,35 +191,11 @@ public class GameController {
             });
             thread.start();
         } else {
-            if ("Οδός".equals(Board[FindCurrentPos()].getType())) {
-                if (Board[FindCurrentPos()] instanceof Odoi odos){
-                    if (!odos.isAgorasmeno()) {
-                        EndTurn.setDisable(false);
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setTitle("Monopoly");
-                        alert.setHeaderText("Λάθος Ενέργεια");
-                        alert.setContentText("Δεν έχεις τελειώσει τον γύρο σου");
-                        alert.showAndWait();
-                    } else {
-                        Player currentPlayer = (turn == 1) ? player1 : player2;
-                        if (!Belongs(currentPlayer,FindCurrentPos())){
-                            EndTurn.setDisable(true);
-                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                            alert.setTitle("Monopoly");
-                            alert.setHeaderText("Λάθος Ενέργεια");
-                            alert.setContentText("Πρέπει να πληρώσεις πρώτα το Ενοίκιο");
-                            alert.showAndWait();
-                        }else{
-                            EndTurn.setDisable(false);
-                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                            alert.setTitle("Monopoly");
-                            alert.setHeaderText("Λάθος Ενέργεια");
-                            alert.setContentText("Πρέπει πρώτα να τελειώσεις τον γύρω σου");
-                            alert.showAndWait();
-                        }
-                    }
-                }
-            }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Monopoly");
+            alert.setHeaderText("Λάθος Ενέργεια");
+            alert.setContentText("Δεν έχεις τελειώσει τον γύρο σου");
+            alert.showAndWait();
         }
     }
     private String getDiceImagePath(int diceNumber) {
@@ -226,11 +204,6 @@ public class GameController {
         } catch (NullPointerException e) {
             throw new RuntimeException("Η εικόνα για το ζάρι " + diceNumber + " δεν βρέθηκε.");
         }
-    }
-    public int FindCurrentPos() {
-        if (turn == 1) {
-            return player1.getCurrentPos();
-        } else return player2.getCurrentPos();
     }
     // Αρχικοποίηση των δεδομένων του παιχνιδιού
     public void initializeGame(String username1, String username2, Avatar Avatar1, Avatar Avatar2) {
@@ -243,6 +216,7 @@ public class GameController {
         Anchor1.setOpacity(0);
         Anchor2.setOpacity(0);
         PayTax.setOpacity(0);
+        Buying.setText("");
         PayTax.setDisable(true);
 
         Cards[] cards1 = new Cards[29];
@@ -574,22 +548,16 @@ public class GameController {
         });
 
         PayTax.setOnAction(event -> {
+            boolean result;
             if (turn == 1) {
-                boolean result = ConfirmPayTax(player1, player1.getCurrentPos(),posoProsPlirwmi);
-                if (result){
-                    endofround=true;
-                    PayTax.setDisable(true);
-                    BasicVisibility();
-                    EndTurn.setDisable(false);
-                }
+                result = ConfirmPayTax(player1, player1.getCurrentPos(), posoProsPlirwmi);
             }else{
-                boolean result = ConfirmPayTax(player2, player2.getCurrentPos(),posoProsPlirwmi);
-                if (result) {
-                    endofround = true;
-                    PayTax.setDisable(true);
-                    BasicVisibility();
-                    EndTurn.setDisable(false);
-                }
+                result = ConfirmPayTax(player2, player2.getCurrentPos(), posoProsPlirwmi);
+            }
+            if (result){
+                ForosIsUp=false;
+                PayTax.setDisable(true);
+                BasicVisibility();
             }
         });
     }
@@ -598,14 +566,12 @@ public class GameController {
         PayTax.setOpacity(0);
         PayRentBtn.setOpacity(1);
         PayRentBtn.setDisable(true);
-        EndTurn.setDisable(true);
     }
     public  void NotBasicVisibility(){
         PayTax.setDisable(false);
         PayTax.setOpacity(1);
         PayRentBtn.setOpacity(0);
         PayRentBtn.setDisable(true);
-        EndTurn.setDisable(true);
     }
     public void DisableButtons() {
         YesBuy.setDisable(true);
@@ -674,7 +640,6 @@ public class GameController {
         Apofasi decision3 = new Apofasi("Φορολογία", "Apofasi",true) {
             @Override
             public void DoTax(Player player) {
-                EndTurn.setDisable(true);
                 int Synolo = player.getSynoloSpitiwn() * 20 + player.getSynoloJenodoxeiwn() * 50;
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -696,7 +661,6 @@ public class GameController {
         Apofasi decision4 = new Apofasi("Ασφάλεια ζωής", "Apofasi",true) {
             @Override
             public void DoTax(Player player) {
-                EndTurn.setDisable(true);
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Κάρτα Απόφασης");
@@ -864,7 +828,6 @@ public class GameController {
         Apofasi decision12 = new Apofasi(" Πλήρωσε για νοσοκομειακή περίθαλψη 100€", "Apofasi",true) {
             @Override
             public void DoTax(Player player) {
-                EndTurn.setDisable(true);
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Κάρτα Απόφασης");
@@ -886,7 +849,7 @@ public class GameController {
         Apofasi decision13 = new Apofasi("Σε έπιασαν για φοροδιαφυγή! Πλήρωσε έξτρα 50€", "Apofasi",true) {
             @Override
             public void DoTax(Player player) {
-                EndTurn.setDisable(true);
+
                 // Εμφάνιση μηνύματος για την κάρτα
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Κάρτα Απόφασης");
@@ -1205,8 +1168,6 @@ public class GameController {
         Entoli entoli13 = new Entoli("Πάρε Χριστουγεννιάτικο δώρο 300€ ", "Εντολή") {
             @Override
             public boolean Do(Player player) {
-                System.out.println("Εκτέλεση της εντολής: Πήγαινε στη Θέρμη");
-
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Κάρτα Εντολής");
                 alert.setHeaderText("Αποτέλεσμα Κάρτας");
@@ -1314,7 +1275,6 @@ public class GameController {
                 Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
                 stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
-                EndTurn.setDisable(true);
                 NotBasicVisibility();
             }
         };
@@ -1328,7 +1288,6 @@ public class GameController {
                 Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
                 stage.getIcons().add(new Image("monopoly-man.jpg"));
                 alert.showAndWait();
-                EndTurn.setDisable(true);
                 NotBasicVisibility();
             }
         };
@@ -1405,14 +1364,14 @@ public class GameController {
             CardName.setText("");
             switch (Board[newPos].getType()) {
                 case "Φόρος" -> {
+                    Buying.setText("");
                     CardName.setText("Ονομασία Περιοχής: " + Board[newPos].getCardName());
                     LeftLabelReset();
                     CostOfArea.setText("");
                     YesBuy.setDisable(true);
                     NoBuy.setDisable(true);
-                    EndTurn.setDisable(true);
-                    playbutton.setDisable(true);
                     odos3.DoTax(currentPlayer);
+                    ForosIsUp=true;
                 }
                 case "Οδός" -> {
                     CardName.setText("Ονομασία Περιοχής: " + Board[newPos].getCardName());
@@ -1425,26 +1384,25 @@ public class GameController {
                         rent4house.setText("Ενοίκιο με 4 σπίτια: " + odos.CostOdos(false, 4, CompletedSet(odos.getColor(), currentPlayer)));
                         renthotel.setText("Ενοίκιο με ξενοδοχείο: " + odos.CostOdos(true, 0, CompletedSet(odos.getColor(), currentPlayer)));
                         if (odos.isAgorasmeno()) {
-                            EndTurn.setDisable(true);
+                            Buying.setText("Αγορασμένη Περιοχή");
                             IsBought.setText("Αγορασμένο: Ναι");
                             YesBuy.setDisable(true);
-                            playbutton.setDisable(true);
                             NoBuy.setDisable(true);
                             CostOfArea.setText("");
                             if (Belongs(currentPlayer, newPos)) {
                                 PayNotPayRent.setText("Η περιοχή σου ανήκει");
                                 PayRentBtn.setDisable(true);
-                                EndTurn.setDisable(false);
                                 YesBuy.setDisable(true);
                                 NoBuy.setDisable(true);
                             } else {
-                                endofround = false;
+                                RentIsUp=true;
                                 PayNotPayRent.setText("Η περιοχή δεν σου ανήκει, πλήρωσε ενοίκιο!");
                                 PayRentBtn.setDisable(false);
                                 CostOfRent.setText("Κόστος Ενοικίου: " + odos.CostOdos(odos.isJenodoxeio(), odos.getSpitia(), CompletedSet(odos.getColor(), nextPlayer)));
                             }
                         } else {
                             IsBought.setText("Αγορασμένο: Όχι");
+                            Buying.setText("Αγοράζεις?");
                             CostOfArea.setText("Κόστος Περιοχής: " + odos.getTimi());
                             YesBuy.setDisable(false);
                             NoBuy.setDisable(false);
@@ -1462,8 +1420,7 @@ public class GameController {
                         renthotel.setText("");
                         rent4house.setText("");
                         if (odos.isAgorasmeno()) {
-                            EndTurn.setDisable(true);
-                            playbutton.setDisable(true);
+                            Buying.setText("Αγορασμένη Περιοχή");
                             IsBought.setText("Αγορασμένο: Ναι");
                             YesBuy.setDisable(true);
                             NoBuy.setDisable(true);
@@ -1472,18 +1429,17 @@ public class GameController {
                             if (Belongs(currentPlayer, newPos)) {
                                 PayNotPayRent.setText("Η περιοχή σου ανήκει");
                                 PayRentBtn.setDisable(true);
-                                EndTurn.setDisable(false);
                             } else {
+                                RentIsUp=true;
                                 PayNotPayRent.setText("Η περιοχή δεν σου ανήκει, πλήρωσε ενοίκιο!");
                                 CostOfRent.setText("Κόστος Ενοικίου: " + odos.CostStathmos(nextPlayer.getStathmoi()));
-                                PayRentBtn.setDisable(false);
                             }
                         } else {
+                            Buying.setText("Αγοράζεις?");
                             IsBought.setText("Αγορασμένο: Όχι");
                             CostOfArea.setText("Κόστος Περιοχής: " + odos.getTimi());
                             NoBuy.setDisable(false);
                             YesBuy.setDisable(false);
-                            EndTurn.setDisable(true);
                         }
                     }
                 }
@@ -1492,21 +1448,21 @@ public class GameController {
                     if (Board[newPos] instanceof Odoi odos) {
                         LeftLabelReset();
                         if (odos.isAgorasmeno()) {
+                            Buying.setText("Αγορασμένη Περιοχή");
                             IsBought.setText("Αγορασμένο: Ναι");
                             YesBuy.setDisable(true);
                             NoBuy.setDisable(true);
-                            playbutton.setDisable(true);
-                            EndTurn.setDisable(true);
                             if (Belongs(currentPlayer, newPos)) {
                                 PayNotPayRent.setText("Η περιοχή σου ανήκει");
                                 PayRentBtn.setDisable(true);
-                                EndTurn.setDisable(false);
                             } else {
+                                RentIsUp=true;
                                 PayNotPayRent.setText("Η περιοχή δεν σου ανήκει, πλήρωσε ενοίκιο!");
                                 CostOfRent.setText("Κόστος Ενοικίου: " + odos.CostEtairies(nextPlayer.getEtairies(), diceSum));
                                 PayRentBtn.setDisable(false);
                             }
                         } else {
+                            Buying.setText("Αγοράζεις?");
                             IsBought.setText("Αγορασμένο: Όχι");
                             CostOfArea.setText("Κόστος Περιοχής: " + odos.getTimi());
                             NoBuy.setDisable(false);
@@ -1515,28 +1471,23 @@ public class GameController {
                     }
                 }
                 case "Σημείο" -> {
+                    Buying.setText("");
                     CardName.setText("Ονομασία Περιοχής: " + Board[newPos].getCardName());
                     if (Board[newPos] instanceof StartPos) {
                         LeftLabelReset();
                         CostOfArea.setText("");
                         NoBuy.setDisable(true);
                         YesBuy.setDisable(true);
-                        playbutton.setDisable(true);
-                        EndTurn.setDisable(false);
                     } else if (Board[newPos] instanceof Prison) {
                         LeftLabelReset();
                         CostOfArea.setText("");
                         NoBuy.setDisable(true);
                         YesBuy.setDisable(true);
-                        playbutton.setDisable(true);
-                        EndTurn.setDisable(false);
                     } else if (Board[newPos] instanceof GoToPrison) {
                         LeftLabelReset();
                         CostOfArea.setText("");
                         NoBuy.setDisable(true);
                         YesBuy.setDisable(true);
-                        playbutton.setDisable(true);
-                        EndTurn.setDisable(false);
 
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Monopoly");
@@ -1556,11 +1507,10 @@ public class GameController {
                         CostOfArea.setText("");
                         NoBuy.setDisable(true);
                         YesBuy.setDisable(true);
-                        playbutton.setDisable(true);
-                        EndTurn.setDisable(false);
                     }
                 }
                 case "Απόφαση" -> {
+                    Buying.setText("");
                     CardName.setText("");
                     LeftLabelReset();
                     if (Board[newPos] instanceof Apofasi) {
@@ -1570,8 +1520,6 @@ public class GameController {
                             CostOfArea.setText("");
                             NoBuy.setDisable(true);
                             YesBuy.setDisable(true);
-                            playbutton.setDisable(true);
-                            EndTurn.setDisable(true);
 
                             // Εκτέλεση της επάνω εντολής και μεταφορά στη στοίβα `UsedApofaseis`
                             Apofasi apofasi = Apofaseis.pop();
@@ -1581,7 +1529,7 @@ public class GameController {
                                     result = apofasi.Do(currentPlayer);
                                 }
                             }else {
-                                EndTurn.setDisable(true);
+                                ForosIsUp=true;
                                 apofasi.DoTax(currentPlayer);
                             }
                             UsedApofaseis.push(apofasi);
@@ -1592,8 +1540,6 @@ public class GameController {
                             CostOfArea.setText("");
                             NoBuy.setDisable(true);
                             YesBuy.setDisable(true);
-                            playbutton.setDisable(true);
-                            EndTurn.setDisable(true);
 
                             // Εκτέλεση της εντολής από `UsedApofaseis` και επαναφορά στην `Apofaseis`
                             Apofasi apofasi = UsedApofaseis.pop();
@@ -1603,7 +1549,7 @@ public class GameController {
                                     result = apofasi.Do(currentPlayer);
                                 }
                             }else {
-                                EndTurn.setDisable(true);
+                                ForosIsUp=true;
                                 apofasi.DoTax(currentPlayer);
                             }
                             Apofaseis.push(apofasi);
@@ -1615,6 +1561,7 @@ public class GameController {
                     }
                 }
                 case "Εντολή" -> {
+                    Buying.setText("");
                     CardName.setText("");
                     if (Board[newPos] instanceof Entoli) {
                         if (countEntoles <= 13 && !Entoles.isEmpty()) {
@@ -1623,8 +1570,6 @@ public class GameController {
                             CostOfArea.setText("");
                             NoBuy.setDisable(true);
                             YesBuy.setDisable(true);
-                            playbutton.setDisable(true);
-                            EndTurn.setDisable(false);
 
                             // Εκτέλεση της επάνω εντολής και μεταφορά στη στοίβα `UsedEntoles`
                             Entoli entoli = Entoles.pop();
@@ -1641,8 +1586,6 @@ public class GameController {
                             CostOfArea.setText("");
                             NoBuy.setDisable(true);
                             YesBuy.setDisable(true);
-                            playbutton.setDisable(true);
-                            EndTurn.setDisable(false);
 
                             // Εκτέλεση της εντολής από `UsedEntoles` και επαναφορά στη `Entoles`
                             Entoli entoli = UsedEntoles.pop();
@@ -1660,14 +1603,13 @@ public class GameController {
                     }
                 }
                 case null, default -> {
+                    Buying.setText("");
                     CardName.setText("");
                     LeftLabelReset();
                     CostOfArea.setText("");
                     IsBought.setText("");
                     NoBuy.setDisable(true);
                     YesBuy.setDisable(true);
-                    playbutton.setDisable(true);
-                    EndTurn.setDisable(false);
                 }
             }
         }
@@ -1716,9 +1658,8 @@ public class GameController {
     public void checkPrison(Player player) {
         YesBuy.setDisable(true);
         NoBuy.setDisable(true);
-        playbutton.setDisable(true);
-        EndTurn.setDisable(false);
         LeftLabelReset();
+
         if (player == player1) {
             if (CheckPrison1.isSelected()) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -1918,137 +1859,149 @@ public class GameController {
         }
     }
     //Buttons no/endturn
-    public void EndOfTurn() {
+    public int FindCurrentPos() {
         if (turn == 1) {
-            if (dice1Number == dice2Number && !player1.isPrison()) {
-                if (counter1doubles < 2) {
-                    turn = 1;
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Monopoly");
-                    alert.setHeaderText("Είσαι τυχερός!!");
-                    alert.setContentText("Έφερες διπλές ζαριές, και ξανά παίζεις");
-                    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-                    stage.getIcons().add(new Image("monopoly-man.jpg"));
-                    alert.showAndWait();
-                    counter1doubles++;
-                } else {
-                    player1.setPrison(true);
-                    Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
-                    alert2.setTitle("Monopoly");
-                    alert2.setHeaderText("Είσαι ασυνήθιστα τυχερός");
-                    alert2.setContentText("Πάνε αμέσως φυλακή για να ηρεμήσεις!");
-                    Stage stage = (Stage) alert2.getDialogPane().getScene().getWindow();
-                    stage.getIcons().add(new Image("monopoly-man.jpg"));
-                    alert2.showAndWait();
-
-                    player1.setCurrentPos(10);
-                    player1.getStack().setLayoutX(Board[10].getX());
-                    player1.getStack().setLayoutY(Board[10].getY());
-
-                    ButtonType payToExit = new ButtonType("Πλήρωσε 100€  για να βγεις");
-                    ButtonType waitForTurns = new ButtonType("Περίμενε 3 γύρους");
-
-                    alert2.getButtonTypes().setAll(payToExit, waitForTurns);
-                    Optional<ButtonType> result = alert2.showAndWait();
-
-                    if (result.isPresent()) {
-                        if (result.get() == payToExit) {
-                            if (player1.getMoney() >= 100) {
-                                player1.setMoney(player1.getMoney() - 100);
-                                money1.setText("Χρήματα: " + player1.getMoney());
-                                player1.setPrison(false);
-                                player1.setRounds(0);
-                                turn = 2;
-                            } else {
-                                // Ενημέρωση ότι ο παίκτης δεν έχει αρκετά χρήματα
-                                Alert noMoneyAlert = new Alert(Alert.AlertType.ERROR);
-                                noMoneyAlert.setTitle("Monopoly");
-                                noMoneyAlert.setHeaderText("Φυλακή");
-                                noMoneyAlert.setContentText("Χρειάζεσαι 100€  για να πληρώσεις την εγγύηση.");
-                                Stage stage2 = (Stage) noMoneyAlert.getDialogPane().getScene().getWindow();
-                                stage2.getIcons().add(new Image("monopoly-man.jpg"));
-                                noMoneyAlert.showAndWait();
+            return player1.getCurrentPos();
+        } else return player2.getCurrentPos();
+    }
+    public void EndOfTurn() {
+        System.out.println(turn );
+        if (!endofround) {
+            switch (Board[newPos].getType()) {
+                case "Οδός" -> {
+                    if (Board[FindCurrentPos()] instanceof Odoi odos) {
+                        if (!odos.isAgorasmeno()) {
+                            if (!Buy && !NotBuy) {
+                                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                alert.setTitle("Monopoly");
+                                alert.setHeaderText("Αποτέλεσμα Ενέργειας!");
+                                alert.setContentText("Πρέπει πρώτα να επιλέξεις αν θα αγοράσεις ή όχι");
+                                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                                stage.getIcons().add(new Image("monopoly-man.jpg"));
+                                alert.showAndWait();
+                            }else {
+                                endofround = true;
+                                YesBuy.setDisable(true);
+                                NoBuy.setDisable(true);
+                                CheckForDoubles();
                             }
-                        } else {
-                            player1.setRounds(1);
+                        }
+                        else {
+                            if (!RentIsUp) {
+                                endofround = true;
+                                YesBuy.setDisable(true);
+                                NoBuy.setDisable(true);
+                                CheckForDoubles();
+                            }else {
+                                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                alert.setTitle("Monopoly");
+                                alert.setHeaderText("Αποτέλεσμα Ενέργειας");
+                                alert.setContentText("Πρέπει πρώτα να πληρώσεις το ενοίκιο!");
+                                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                                stage.getIcons().add(new Image("monopoly-man.jpg"));
+                                alert.showAndWait();
+                            }
                         }
                     }
                 }
-            } else {
-                turn = 2;
-                counter1doubles = 0;
-            }
-        } else {
-            if (dice1Number == dice2Number && !player2.isPrison()) {
-                if (counter2doubles < 2) {
-                    turn = 2;
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Monopoly");
-                    alert.setHeaderText("Είσαι τυχερός!!");
-                    alert.setContentText("Έφερες διπλές ζαριές, και ξανά παίζεις");
-                    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-                    stage.getIcons().add(new Image("monopoly-man.jpg"));
-                    alert.showAndWait();
-                    counter2doubles++;
-                } else {
-                    player2.setPrison(true);
-                    Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
-                    alert2.setTitle("Monopoly");
-                    alert2.setHeaderText("Είσαι ασυνήθιστα τυχερός");
-                    alert2.setContentText("Πάνε αμέσως φυλακή για να ηρεμήσεις!");
-                    Stage stage = (Stage) alert2.getDialogPane().getScene().getWindow();
-                    stage.getIcons().add(new Image("monopoly-man.jpg"));
-                    alert2.showAndWait();
-
-                    player2.setCurrentPos(10);
-                    player2.getStack().setLayoutX(Board[10].getX());
-                    player2.getStack().setLayoutY(Board[10].getY());
-
-                    ButtonType payToExit = new ButtonType("Πλήρωσε 100€  για να βγεις");
-                    ButtonType waitForTurns = new ButtonType("Περίμενε 3 γύρους");
-
-                    alert2.getButtonTypes().setAll(payToExit, waitForTurns);
-                    Optional<ButtonType> result = alert2.showAndWait();
-
-                    if (result.isPresent()) {
-                        if (result.get() == payToExit) {
-                            if (player2.getMoney() >= 100) {
-                                player2.setMoney(player2.getMoney() - 100);
-                                money2.setText("Χρήματα: " + player2.getMoney());
-                                player2.setPrison(false);
-                                player2.setRounds(0);
-                                turn = 1;
-                            } else {
-                                // Ενημέρωση ότι ο παίκτης δεν έχει αρκετά χρήματα
-                                Alert noMoneyAlert = new Alert(Alert.AlertType.ERROR);
-                                noMoneyAlert.setTitle("Monopoly");
-                                noMoneyAlert.setHeaderText("Φυλακή");
-                                noMoneyAlert.setContentText("Χρειάζεσαι 100€  για να πληρώσεις την εγγύηση.");
-                                Stage stage2 = (Stage) noMoneyAlert.getDialogPane().getScene().getWindow();
-                                stage2.getIcons().add(new Image("monopoly-man.jpg"));
-                                noMoneyAlert.showAndWait();
-                            }
-                        } else {
-                            player2.setRounds(1);
-                        }
+                case null, default -> {
+                    if (!ForosIsUp) {
+                        endofround = true;
+                        YesBuy.setDisable(true);
+                        NoBuy.setDisable(true);
+                        CheckForDoubles();
+                    } else if (ForosIsUp) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Monopoly");
+                        alert.setHeaderText("Αποτέλεσμα Ενέργειας");
+                        alert.setContentText("Πρέπει πρώτα να πληρώσεις τον φόρο!");
+                        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                        stage.getIcons().add(new Image("monopoly-man.jpg"));
+                        alert.showAndWait();
                     }
                 }
-            } else {
-                turn = 1;
-                counter2doubles = 0;
             }
         }
-        Turns.setText("Σειρά του " + turn + "ου Παίκτη");
-        playbutton.setDisable(false);
-        endofround = true;
-        YesBuy.setDisable(true);
-        NoBuy.setDisable(true);
-        EndTurn.setDisable(true);
+        else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Monopoly");
+            alert.setHeaderText("Αποτέλεσμα Ενέργειας!");
+            alert.setContentText("Δεν μπορείς να τελειώσεις τον γύρο πριν παίξεις!");
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image("monopoly-man.jpg"));
+            alert.showAndWait();
+        }
+        System.out.println(turn);
+    }
+
+    public void CheckForDoubles(){
+        if (endofround){
+            if (turn == 1) {
+                if (dice1Number == dice2Number && !player1.isPrison()) {
+                    if (counter1doubles < 2) {
+                        turn = 1; //DIATIRISI TIS SEIRAS
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Monopoly");
+                        alert.setHeaderText("Είσαι τυχερός!!");
+                        alert.setContentText("Έφερες διπλές ζαριές, και ξανά παίζεις");
+                        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                        stage.getIcons().add(new Image("monopoly-man.jpg"));
+                        alert.showAndWait();
+                        counter1doubles++;
+                    } else {
+                        Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                        alert2.setTitle("Monopoly");
+                        alert2.setHeaderText("Είσαι ασυνήθιστα τυχερός");
+                        alert2.setContentText("Πάνε αμέσως φυλακή για να ηρεμήσεις!");
+                        Stage stage = (Stage) alert2.getDialogPane().getScene().getWindow();
+                        stage.getIcons().add(new Image("monopoly-man.jpg"));
+                        alert2.showAndWait();
+
+                        player1.setCurrentPos(10);
+                        player1.getStack().setLayoutX(Board[10].getX());
+                        player1.getStack().setLayoutY(Board[10].getY());
+                        player1.setPrison(true);
+                    }
+                } else {
+                    turn = 2; //ALLAGI SEIRAS
+                    counter1doubles = 0;
+                }
+            } else {
+                if (dice1Number == dice2Number && !player2.isPrison()) {
+                    if (counter2doubles < 2) {
+                        turn = 2; //DIATIRISI TIS SEIRAS
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Monopoly");
+                        alert.setHeaderText("Είσαι τυχερός!!");
+                        alert.setContentText("Έφερες διπλές ζαριές, και ξανά παίζεις");
+                        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                        stage.getIcons().add(new Image("monopoly-man.jpg"));
+                        alert.showAndWait();
+                        counter2doubles++;
+                    } else {
+                        Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                        alert2.setTitle("Monopoly");
+                        alert2.setHeaderText("Είσαι ασυνήθιστα τυχερός");
+                        alert2.setContentText("Πάνε αμέσως φυλακή για να ηρεμήσεις!");
+                        Stage stage = (Stage) alert2.getDialogPane().getScene().getWindow();
+                        stage.getIcons().add(new Image("monopoly-man.jpg"));
+                        alert2.showAndWait();
+
+                        player2.setCurrentPos(10);
+                        player2.getStack().setLayoutX(Board[10].getX());
+                        player2.getStack().setLayoutY(Board[10].getY());
+                        player2.setPrison(true);
+                    }
+                } else {
+                    turn = 1; //ALLAGI SEIRAS
+                    counter2doubles = 0;
+                }
+            }
+            Turns.setText("Σειρά του " + turn + "ου Παίκτη");
+        }
     }
     public boolean NoBuys() {
-        EndTurn.setDisable(false);
-        playbutton.setDisable(true);
-        return endofround = true;
+        return NotBuy=true;
     }
     //Card se lista
     public void ListShow(Player player, Cards newCard) {
@@ -2132,12 +2085,9 @@ public class GameController {
         boolean plirwmi;
         if (turn == 1) {
             PayRentBtn.setDisable(false);
-            playbutton.setDisable(true);
             plirwmi = ConfirmPayment(player1, player2, newPos);
             if (plirwmi) {
-                endofround = true;
-                EndTurn.setDisable(false);
-                playbutton.setDisable(true);
+                RentIsUp=false;
             } else {
                 CheckMoney(player1);
             }
@@ -2145,9 +2095,7 @@ public class GameController {
             PayRentBtn.setDisable(false);
             plirwmi = ConfirmPayment(player2, player1, newPos);
             if (plirwmi) {
-                endofround = true;
-                EndTurn.setDisable(false);
-                playbutton.setDisable(true);
+                RentIsUp=false;
             } else {
                 CheckMoney(player2);
             }
@@ -2316,19 +2264,18 @@ public class GameController {
         if (turn == 1) {
             isBought = BuyOdos(player1, newPos, event);
             if (isBought) {
+                Buy=true;
                 money1.setText("Χρήματα:" + player1.getMoney());
-                playbutton.setDisable(true);
             }
             player1.ListSorted();
         } else {
             isBought = BuyOdos(player2, newPos, event);
             if (isBought) {
+                Buy=true;
                 money2.setText("Χρήματα:" + player2.getMoney());
-                playbutton.setDisable(true);
             }
             player2.ListSorted();
         }
-        EndTurn.setDisable(false);
     }
     //refresh ui
     public void UIRefresher() {
