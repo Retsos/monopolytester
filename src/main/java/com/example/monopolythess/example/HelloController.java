@@ -29,6 +29,15 @@ public class HelloController {
         stage.setScene(scene);
         stage.show();
     }
+    public void SwitchAbout(ActionEvent event )throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(GameController.class.getResource("/com/example/monopolythess/About.fxml"));
+        Parent root1 = fxmlLoader.load();
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root1, 1540, 790);
+        stage.setScene(scene);
+        stage.show();
+    }
     public void Exit(){
         Platform. exit();
     }

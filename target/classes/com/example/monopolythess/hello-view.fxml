@@ -12,12 +12,20 @@
       <image>
         <Image url="@../../../monopoly.png" />
       </image>
+         <VBox.margin>
+            <Insets top="-30.0" />
+         </VBox.margin>
     </ImageView>
     <Button fx:id="PlayButton" mnemonicParsing="false" onAction="#SwitchNextScene" prefHeight="40.0" prefWidth="225.0" text="Νέο Παιχνίδι">
       <VBox.margin>
         <Insets top="100.0" />
       </VBox.margin></Button>
       <Button mnemonicParsing="false" onAction="#SwitchOptions" prefHeight="40.0" prefWidth="225.0" text="Οδηγίες">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#SwitchAbout" prefHeight="40.0" prefWidth="225.0" text="Σχετικά">
          <VBox.margin>
             <Insets top="10.0" />
          </VBox.margin>

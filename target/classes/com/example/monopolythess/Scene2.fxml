@@ -169,7 +169,7 @@
       </AnchorPane>
       <BorderPane fx:id="BorderPane" layoutX="767.0" layoutY="29.0" prefHeight="750.0" prefWidth="833.0" AnchorPane.bottomAnchor="17.5" AnchorPane.topAnchor="25.5">
          <top>
-            <HBox prefHeight="274.0" prefWidth="832.0" styleClass="player-area" stylesheets="@Scene2.css" BorderPane.alignment="CENTER">
+            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="302.0" styleClass="player-area" stylesheets="@Scene2.css" BorderPane.alignment="CENTER">
                <children>
                   <AnchorPane fx:id="Player1Side" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="277.0" prefWidth="375.0">
                      <children>
@@ -287,7 +287,7 @@
                         <Insets bottom="10.0" left="5.0" />
                      </padding>
                   </AnchorPane>
-                  <AnchorPane fx:id="Player2Side" prefHeight="290.0" prefWidth="447.0">
+                  <AnchorPane fx:id="Player2Side" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="290.0" prefWidth="447.0">
                      <children>
                         <Label fx:id="displayname2" layoutX="40.0" layoutY="3.0" text="Παίκτης 2 : " AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="0.0">
                            <font>
@@ -413,9 +413,9 @@
             </HBox>
          </top>
          <center>
-            <TitledPane animated="false" collapsible="false" prefHeight="362.0" prefWidth="880.0" text="Κάρτα" BorderPane.alignment="CENTER">
+            <TitledPane animated="false" collapsible="false" prefHeight="321.0" prefWidth="1098.0" text="Κάρτα" BorderPane.alignment="CENTER">
                <content>
-                  <AnchorPane maxHeight="329.0" minHeight="100.0" minWidth="300.0" prefHeight="329.0" prefWidth="837.0" styleClass="central-area-borderless" stylesheets="@Scene2.css">
+                  <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="296.0" prefWidth="1089.0" styleClass="central-area-borderless" stylesheets="@Scene2.css">
                      <children>
                         <Label fx:id="cardType" layoutX="24.0" layoutY="15.0" text="Τύπος Κάρτας:">
                            <font>
@@ -482,7 +482,7 @@
                               <Font size="22.0" />
                            </font></Label>
                         <Label layoutX="616.0" layoutY="29.0" />
-                        <Label fx:id="PayNotPayRent" layoutX="427.0" layoutY="36.0" prefHeight="27.0" prefWidth="328.0" text="Η περιοχή ΔΕΝ/&quot;&quot; σου ανήκει πληρώνεις ενοίκιο" AnchorPane.leftAnchor="427.0">
+                        <Label fx:id="PayNotPayRent" layoutX="456.79999999999995" layoutY="36.0" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="27.0" prefWidth="279.0" text="Η περιοχή σου ανήκεi" AnchorPane.leftAnchor="456.0">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
@@ -497,7 +497,7 @@
             </TitledPane>
          </center>
          <bottom>
-            <AnchorPane prefHeight="109.0" prefWidth="880.0" styleClass="central-area" stylesheets="@Scene2.css" BorderPane.alignment="CENTER">
+            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="109.0" prefWidth="880.0" styleClass="central-area" stylesheets="@Scene2.css" BorderPane.alignment="CENTER">
                <children>
                   <ImageView fx:id="dice1" fitHeight="50.0" fitWidth="210.0" layoutX="80.0" layoutY="76.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="773.8">
                      <image>

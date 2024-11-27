@@ -7,6 +7,8 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
@@ -83,7 +85,7 @@
                   </TitledPane>
                </center>
                <BorderPane.margin>
-                  <Insets bottom="50.0" />
+                  <Insets bottom="50.0" left="50.0" right="50.0" />
                </BorderPane.margin>
             </BorderPane>
          </left>
@@ -147,27 +149,37 @@
                   </TitledPane>
                </center>
                <BorderPane.margin>
-                  <Insets bottom="50.0" />
+                  <Insets bottom="50.0" left="50.0" right="50.0" />
                </BorderPane.margin>
             </BorderPane>
          </right>
          <padding>
             <Insets left="250.0" right="250.0" />
          </padding>
-         <center>
-            <Label fx:id="Winner" alignment="TOP_CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" minWidth="678.0" prefHeight="46.0" prefWidth="701.0" styleClass="winner-message" stylesheets="@Scene3.css" text="Νικητής είναι ο : Γιώργος με συνολικη αξία περιουσιας: 3500" textFill="#00ff09" BorderPane.alignment="TOP_CENTER">
+         <bottom>
+            <Label fx:id="Winner" alignment="TOP_CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" minWidth="678.0" prefHeight="63.0" prefWidth="878.0" styleClass="winner-message" stylesheets="@Scene3.css" text="Νικητής είναι ο : Γιώργος με συνολικη αξία περιουσιας: 3500" textFill="#00ff09" BorderPane.alignment="CENTER">
                <font>
                   <Font size="25.0" />
                </font>
                <BorderPane.margin>
-                  <Insets top="500.0" />
+                  <Insets bottom="50.0" />
                </BorderPane.margin>
             </Label>
+         </bottom>
+         <center>
+            <ImageView blendMode="MULTIPLY" fitHeight="200.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@../../../monopoly-man.jpg" />
+               </image>
+               <BorderPane.margin>
+                  <Insets top="-40.0" />
+               </BorderPane.margin>
+            </ImageView>
          </center>
       </BorderPane>
       <Button fx:id="QuitGame" alignment="CENTER" contentDisplay="CENTER" layoutY="50.0" mnemonicParsing="false" onAction="#Exit" prefHeight="50.0" prefWidth="200.0" styleClass="exit-button" stylesheets="@Scene3.css" text="Έξοδος" textAlignment="CENTER" textFill="#00ff09">
          <VBox.margin>
-            <Insets top="-50.0" />
+            <Insets bottom="50.0" top="-75.0" />
          </VBox.margin>
          <font>
             <Font size="16.0" />

@@ -36,7 +36,7 @@
                   </VBox>
                </content>
             </TitledPane>
-          <TitledPane animated="false" stylesheets="@Options.css" text="Κουμπιά Παιχνιδιού">
+          <TitledPane animated="false" prefHeight="555.0" prefWidth="795.0" stylesheets="@Options.css" text="Κουμπιά Παιχνιδιού">
                <content>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
