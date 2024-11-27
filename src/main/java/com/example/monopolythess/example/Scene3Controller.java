@@ -15,11 +15,149 @@ public class Scene3Controller {
         Player2.setText("Παίκτης 2: " + player2.getName());
         Agores1.getItems().clear();
         Agores2.getItems().clear();
+        // Παράδειγμα για ListView στο δεύτερο Controller
+        Agores1.setCellFactory(listView -> new ListCell<String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+
+                // Αν το item είναι κενό ή null, καθαρίζουμε το κείμενο και το στυλ
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(item);
+
+                    // Αναζήτηση για την κάρτα που αντιστοιχεί στο item
+                    Cards associatedCard = null;
+
+                    // Αν η player1.getCards() είναι μια λίστα από κάρτες
+                    for (Cards card : player1.getCards()) {
+                        if (card.getCardName().equals(item)) {
+                            associatedCard = card;
+                            break;
+                        }
+                    }
+
+                    // Αν βρούμε την κάρτα, εφαρμόζουμε το χρώμα της
+                    if (associatedCard instanceof Odoi odos) {
+                        String color = odos.getColor();
+                        switch (color) {
+                            case "Brown":
+                                setStyle("-fx-background-color: #D2B48C;");
+                                break;
+                            case "Green":
+                                setStyle("-fx-background-color: #2ecc71;");
+                                break;
+                            case "Blue":
+                                setStyle("-fx-background-color: #3498db;");
+                                break;
+                            case "Cyan":
+                                setStyle("-fx-background-color: #85c1e9;");
+                                break;
+                            case "Pink":
+                                setStyle("-fx-background-color: #d2b4de;");
+                                break;
+                            case "Yellow":
+                                setStyle("-fx-background-color: #f4d03f;");
+                                break;
+                            case "Orange":
+                                setStyle("-fx-background-color: #dc7633;");
+                                break;
+                            case "Red":
+                                setStyle("-fx-background-color: #e74c3c;");
+                                break;
+                            case "White":
+                                setStyle("-fx-background-color: #ecf0f1;");
+                                break;
+                            case "Grey":
+                                setStyle("-fx-background-color: #b2babb;");
+                                break;
+                            default:
+                                setStyle(""); // Δεν υπάρχει χρώμα, οπότε το στυλ παραμένει αμετάβλητο
+                                break;
+                        }
+                    } else {
+                        setStyle(""); // Αν δεν είναι κάρτα "Odoi", το στυλ παραμένει κενό
+                    }
+                }
+            }
+        });
+
+        Agores2.setCellFactory(listView -> new ListCell<String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+
+                // Αν το item είναι κενό ή null, καθαρίζουμε το κείμενο και το στυλ
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(item);
+
+                    // Αναζήτηση για την κάρτα που αντιστοιχεί στο item
+                    Cards associatedCard = null;
+
+                    // Αν η player1.getCards() είναι μια λίστα από κάρτες
+                    for (Cards card : player2.getCards()) {
+                        if (card.getCardName().equals(item)) {
+                            associatedCard = card;
+                            break;
+                        }
+                    }
+
+                    // Αν βρούμε την κάρτα, εφαρμόζουμε το χρώμα της
+                    if (associatedCard instanceof Odoi odos) {
+                        String color = odos.getColor();
+                        switch (color) {
+                            case "Brown":
+                                setStyle("-fx-background-color: #D2B48C;");
+                                break;
+                            case "Green":
+                                setStyle("-fx-background-color: #2ecc71;");
+                                break;
+                            case "Blue":
+                                setStyle("-fx-background-color: #3498db;");
+                                break;
+                            case "Cyan":
+                                setStyle("-fx-background-color: #85c1e9;");
+                                break;
+                            case "Pink":
+                                setStyle("-fx-background-color: #d2b4de;");
+                                break;
+                            case "Yellow":
+                                setStyle("-fx-background-color: #f4d03f;");
+                                break;
+                            case "Orange":
+                                setStyle("-fx-background-color: #dc7633;");
+                                break;
+                            case "Red":
+                                setStyle("-fx-background-color: #e74c3c;");
+                                break;
+                            case "White":
+                                setStyle("-fx-background-color: #ecf0f1;");
+                                break;
+                            case "Grey":
+                                setStyle("-fx-background-color: #b2babb;");
+                                break;
+                            default:
+                                setStyle(""); // Δεν υπάρχει χρώμα, οπότε το στυλ παραμένει αμετάβλητο
+                                break;
+                        }
+                    } else {
+                        setStyle(""); // Αν δεν είναι κάρτα "Odoi", το στυλ παραμένει κενό
+                    }
+                }
+            }
+        });
+// Προσθήκη στοιχείων στη λίστα
         for (Cards card : player1.getCards()) {
             if (card instanceof Odoi) {
                 Agores1.getItems().add(card.getCardName());
             }
         }
+
         for (Cards card : player2.getCards()) {
             if (card instanceof Odoi) {
                 Agores2.getItems().add(card.getCardName());
